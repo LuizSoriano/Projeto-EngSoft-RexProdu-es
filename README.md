@@ -1,13 +1,12 @@
 # Projeto-EngSoft-RexProduções
-## Visão Geral
 
 `Luiz Victor Soriano`
 
 ## Visão Geral
--[Finalidade](#finalidade)
--[Principais Funcionalidades](#funcionalidades)
--[Tipos de Usuário](#usuarios)
--[Tecnologias Utilizadas](#tecnologias)
+- [Finalidade](#finalidade)
+- [Principais Funcionalidades](#principais-funcionalidades)
+- [Tipos de Usuário](#tipos-de-usuarios)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
 
 ## Finalidade
 
@@ -23,7 +22,7 @@ O sistema lidará com dois tipos de usuário: o organizador do evento, que será
 
 ## Tecnologias Utilizadas
 
--Linguagem utilizada: `JavaScript`
--Banco de Dados utilizado: `MySQL`
--Servidor utilizado: `Elephant SQL`
+- Linguagem utilizada: `JavaScript`
+- Banco de Dados utilizado: `MySQL`
+- Servidor utilizado: `Elephant SQL`
 
