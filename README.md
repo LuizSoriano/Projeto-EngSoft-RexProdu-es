@@ -1,6 +1,6 @@
 # Projeto-EngSoft-RexProduções
 
-`Luiz Victor Soriano`
+Integrantes: `Alexandra Melo, Luiz Victor Soriano, Mardem Arantes de Castro`
 
 ## Visão Geral
 - [Finalidade](#finalidade)
