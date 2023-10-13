@@ -5,14 +5,14 @@
 ## Visão Geral
 - [Finalidade](#finalidade)
 - [Principais Funcionalidades](#principais-funcionalidades)
-- [Tipos de Usuário](#tipos-de-usuarios)
+- [Tipos de Usuário](#tipos-de-usuário)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 
 ## Finalidade
 
 O sistema servirá para o gerenciamento de eventos, envolvendo tanto o seu organizador quanto o seu cliente.
 
-## Principais Funcionalidade
+## Principais Funcionalidades
 
 O sistema deverá ser capaz de cadastrar todos os tipos de clientes, cadastrar e consultar eventos, além de efetuar a compra de ingressos dos eventos cadastrados.
 
