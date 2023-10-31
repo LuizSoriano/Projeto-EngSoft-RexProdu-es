@@ -1,4 +1,4 @@
-Para a identificação de requisitos funcionais, será usada a nomenclatura RF, e para os requisitos não funcionais, será usada a nomenclatura RNF.
+Para a identificação de requisitos funcionais, será usada a nomenclatura RF, e para os requisitos não funcionais, será usada a nomenclatura NF.
 Ambas as siglas virão acompanhadas por um número identificador único de requisitos. 
 Além disso, haverá prioridade entre os requisitos, divididos em essencial, requisito sem o qual o sistema não entra em funcionamento,
 importante, requisito sem o qual o sistema entra em funcionamento, mas de forma não satisfatória, e desejável, requisito que não compromete as funcionalidade básicas do sistema e o mesmo pode funcionar sem ele.
