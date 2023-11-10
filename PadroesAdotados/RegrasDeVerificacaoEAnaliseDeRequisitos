@@ -4,6 +4,7 @@ Além disso, haverá prioridade entre os requisitos, divididos em essencial, req
 importante, requisito sem o qual o sistema entra em funcionamento, mas de forma não satisfatória, e desejável, requisito que não compromete as funcionalidade básicas do sistema e o mesmo pode funcionar sem ele.
 Por fim, o documento de requisitos seguirá as seguintes regras:
     1.Definir somente um requisito por vez.
-    2.Evitar frases grandes.
+    2.Evitar frases com mais de 20 palavras.
     3.Utilizar um vocabulário fechado.
+    
     
