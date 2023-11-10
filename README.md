@@ -7,6 +7,7 @@ Integrantes: `Alexandra Melo, Luiz Victor Soriano, Mardem Arantes de Castro`
 - [Principais Funcionalidades](#principais-funcionalidades)
 - [Tipos de Usuário](#tipos-de-usuário)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Regras e padrões do Git](#regras-e-padrões-do-Git)
 
 ## Finalidade
 
@@ -22,7 +23,24 @@ O sistema lidará com dois tipos de usuário: o organizador do evento, que será
 
 ## Tecnologias Utilizadas
 
-- Linguagem utilizada: `JavaScript`
+- Front-end : `React`
+- Back-end: `Nodejs`
 - Banco de Dados utilizado: `MySQL`
 - Servidor utilizado: `Elephant SQL`
 
+## Regras e padrões do Git
+
+Regras de commit 
+- Um corpo de mensagem de commit mais longo PODE ser fornecido após a descrição curta, fornecendo informações contextuais adicionais sobre as alterações no cpodigo.
+- Um corpo de mensagem de commit é livre e PODE consistir em infinitos parágrafos separados.
+
+Regras de branches
+- O nome deve ser simples e conciso, que represente a tarefa.
+- Um único idioma deve ser utilizado.
+- Não utilize códigos que não tem sentido quando sem contexto.
+- Começar com letras minúsculas.
+- Palavras separados por hífens.
+
+Definições de pastas
+
+As pastas relacionados a documentação terão palavras-chave "regras" ou "padrões", enquanto aquelas relacionadas ao código terão seus nomes ligados às classes utilizadas e funcionalidades.
