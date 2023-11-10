@@ -8,6 +8,7 @@ Integrantes: `Alexandra Melo, Luiz Victor Soriano, Mardem Arantes de Castro`
 - [Tipos de Usuário](#tipos-de-usuário)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Regras e padrões do Git](#regras-e-padrões-do-Git)
+- [Regras e práticas de programação](#regras-e-práticas-de-programação)
 
 ## Finalidade
 
@@ -44,3 +45,12 @@ Regras de branches
 Definições de pastas
 
 As pastas relacionados a documentação terão palavras-chave "regras" ou "padrões", enquanto aquelas relacionadas ao código terão seus nomes ligados às classes utilizadas e funcionalidades.
+
+## Regras e práticas de programação
+
+- O código deve estar identado, com os escopos de condições ID, WHILE, FOR bem identificados.
+- Nomear váriaveis e funções de maneira intuitiva, de forma que demostre o seu propósito.
+- Evitar condição de negação do IF.
+- Comentários de código somente para detalhamento dos objetivos de uma função ou variável.
+- Padronizar nome das constantes, como por exemplo em caixa alta.
+- Percorrer loops somente o necessário, como até encontrar o seu resultado. 
