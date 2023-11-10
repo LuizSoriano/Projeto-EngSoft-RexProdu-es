@@ -40,7 +40,7 @@ Regras de branches
 - Um único idioma deve ser utilizado.
 - Não utilize códigos que não tem sentido quando sem contexto.
 - Começar com letras minúsculas.
-- Palavras separados por hífens.
+- Palavras separadas por hífens.
 
 Definições de pastas
 
@@ -49,7 +49,7 @@ As pastas relacionados a documentação terão palavras-chave "regras" ou "padr�
 ## Regras e práticas de programação
 
 - O código deve estar identado, com os escopos de condições ID, WHILE, FOR bem identificados.
-- Nomear váriaveis e funções de maneira intuitiva, de forma que demostre o seu propósito.
+- Nomear váriaveis e funções de maneira intuitiva, de forma que demonstre o seu propósito.
 - Evitar condição de negação do IF.
 - Comentários de código somente para detalhamento dos objetivos de uma função ou variável.
 - Padronizar nome das constantes, como por exemplo em caixa alta.
