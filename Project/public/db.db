@@ -1,0 +1,15 @@
+CREATE TABLE cliente (
+ cpf varchar(11) PRIMARY KEY,
+ nome varchar(50) NOT NULL, 
+ salario numeric(10, 2) NOT NULL,
+ nasc date
+);
+
+CREATE TABLE artista (
+ cnpj varchar(15) PRIMARY KEY,
+ nome varchar(50) NOT NULL, 
+ empresa varchar(50) NOT NULL,
+ telefone varchar(11) NOT NULL,
+ email varchar(50) NOT NULL
+);
+

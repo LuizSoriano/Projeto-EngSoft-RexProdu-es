@@ -1,0 +1,13 @@
+ROUTES
+    -Chama o CONTROLLER
+CONTROLLER
+    - Recebe os dados
+    - Valida os dados
+    - Chamar SERVICES
+    - Retorna resposta
+SERVICES
+    - Regras de negócio
+    - Chamar PERSISTÊNCIA
+PERSISTÊNCIA
+    - Conexão
+    - Operação em BD
