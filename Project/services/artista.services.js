@@ -2,6 +2,7 @@ import pg from 'pg'//npm install pg
 
 import artistaPersistence from '../persistence/artista.persistence.js'
 import res from 'express/lib/response.js'
+import showServices from './show.services.js'
 
 async function getTodosArtistas(){
     //chama presistência
@@ -23,12 +24,13 @@ async function criaArtista(cnpj, nome, empresa, telefone, email, contrato){
     return resultado
 }
 
-async function excluiArtista(cnpj){
+async function excluiArtista(nome, cnpj){
     //regra de negócio
     var artista = await artistaPersistence.getUmArtista(cnpj)
+    var teste = await showServices.testeShowArtista(nome)
     var resultado = null
     //chamar persistência
-    if(artista.length > 0)
+    if(artista.length > 0 && !teste)
         resultado = await artistaPersistence.excluiArtista(cnpj)
     return resultado
     

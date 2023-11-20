@@ -13,3 +13,31 @@ CREATE TABLE artista (
  email varchar(50) NOT NULL
 );
 
+CREATE TABLE evento (
+ nome varchar(60) PRIMARY KEY,
+ local varchar(50) NOT NULL UNIQUE, 
+ data date NOT NULL,
+ capacidade varchar(10) NOT NULL,
+ arrecadacao varchar(10) NOT NULL,
+ duracao varchar(3) NOT NULL
+);
+
+
+CREATE TABLE show (
+ id int AUTOINCREMENT PRIMARY KEY,
+ hora varchar(3) NOT NULL,
+ atracao varchar(50) NOT NULL, 
+ palco varchar(50) NOT NULL,
+ localEvento varchar(70) NOT NULL REFERENCES evento (local)
+);
+
+CREATE TABLE ingresso (
+ id SERIAL PRIMARY KEY,
+ titulo varchar(50) NOT NULL,
+ tipo varchar(20) NOT NULL, 
+ valor numeric(7, 2) NOT NULL,
+ descricao varchar(70) NOT NULL,
+ tipoEvento varchar(20) NOT NULL
+);
+
+

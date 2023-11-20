@@ -2,6 +2,9 @@ import express from 'express'//npm install express
 import bodyParset from 'body-parser'//npm install body-parser
 import clienteRouter from './routes/cliente.routes.js'
 import artistaRouter from './routes/artista.routes.js'
+import showRouter from './routes/show.routes.js'
+import ingressoRouter from './routes/ingresso.routes.js'
+import eventoRouter from './routes/evento.routes.js'
 
 const app = express()
 
@@ -16,6 +19,9 @@ app.use(bodyParset.urlencoded({extends:true}))
 
 app.use("/cliente", clienteRouter)
 app.use("/artista", artistaRouter)
+app.use("/show", showRouter)
+app.use("/ingresso", ingressoRouter)
+app.use("/evento", eventoRouter)
 
 app.listen(3000, mensagemServidor)
 
