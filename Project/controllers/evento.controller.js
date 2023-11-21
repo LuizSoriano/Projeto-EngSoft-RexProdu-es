@@ -54,7 +54,7 @@ async function excluiEvento(req, res){
 
 async function alteraEvento(req, res){
     //capturar dados
-    const id = req.params.
+    const id = req.params.id
     const hora = req.body.hora
     const atracao = req.body.atracao
     const palco = req.body.palco

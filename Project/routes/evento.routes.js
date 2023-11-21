@@ -3,7 +3,7 @@ import eventoController from '../controllers/evento.controller.js'
 
 const router = express.Router()
 
-router.get('', eventoControlle.getTodosEventos)
+router.get('', eventoController.getTodosEventos)
 router.get('/:id', eventoController.getUmEvento)
 router.post('', eventoController.criaEvento)
 router.delete('/:id', eventoController.excluiEvento)

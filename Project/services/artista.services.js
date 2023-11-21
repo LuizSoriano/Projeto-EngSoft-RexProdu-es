@@ -30,7 +30,7 @@ async function excluiArtista(nome, cnpj){
     var teste = await showServices.testeShowArtista(nome)
     var resultado = null
     //chamar persistência
-    if(artista.length > 0 && !teste)
+    if(artista.lengt > 0 && !teste)
         resultado = await artistaPersistence.excluiArtista(cnpj)
     return resultado
     

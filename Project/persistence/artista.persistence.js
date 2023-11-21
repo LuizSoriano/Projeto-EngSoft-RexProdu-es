@@ -30,7 +30,7 @@ async function getUmArtista(cnpj){
     return resultado
 }
 
-async function criaArtista(cnpj, nome, empresa, telefone, email, contrato){
+async function criaArtist(cnpj, nome, empresa, telefone, email, contrato){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{

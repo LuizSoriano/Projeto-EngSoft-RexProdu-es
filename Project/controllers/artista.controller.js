@@ -81,7 +81,7 @@ async function criaArtista(req, res){
 
 async function excluiArtista(req, res){
     //capturar dados
-    const cnpj = req.params.cnpj
+    const cnpj = req.params.
     const nome = req.params.nome
     var resultado = null
     if(cnpjValido(cnpj)){
