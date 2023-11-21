@@ -27,7 +27,7 @@ async function criaEvento(nome, local, data, capacidade, arrecadacao, duracao, a
     return resultado
 }
 
-async function excluiEvento(id){
+async function excluiEvent(id){
     //regra de negócio
     var evento = await eventoPersistence.getUmEvento(id)
     var resultado = null

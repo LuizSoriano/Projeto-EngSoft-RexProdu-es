@@ -1,6 +1,6 @@
 import BD from './BD.js'
 
-async function getTodosEventos(){
+async function getTodosEvento(){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
