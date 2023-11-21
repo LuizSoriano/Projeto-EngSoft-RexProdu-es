@@ -25,8 +25,8 @@ O sistema lidará com dois tipos de usuário: o organizador do evento, que será
 ## Tecnologias Utilizadas
 
 - Front-end : `React`
-- Back-end: `Nodejs`
-- Banco de Dados utilizado: `MySQL`
+- Back-end: `Nodejs versão 10.2.3`
+- Banco de Dados utilizado: `PostgreSQL`
 - Servidor utilizado: `Elephant SQL`
 
 ## Regras e padrões do Git
