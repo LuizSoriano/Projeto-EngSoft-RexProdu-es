@@ -1,10 +1,25 @@
 import BD from './BD.js'
 
-async function getTodosEventos(){
+async function getTodosEventos(id){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("select * from evento")
+        var query = await con.query("SELECT evento.nome, show.atracao, data, local, titulo, descricao FROM evento JOIN ingresso ON evento.id = ingresso.idEvento JOIN show ON evento.id = show.idEvento where evento.id=$1", [id])
+        console.log(query.rows)
+        resultado = query.rows
+    }catch(err){
+        console.log(err)
+    }finally{
+        con.release()
+    }
+    return resultado
+}
+
+async function getTipoEvento(tipoEvento){
+    var resultado = null;
+    const con = await BD.conectar()//espera uma conexão
+    try{
+        var query = await con.query("select nome, local, data from evento where tipoEvento=$1", [tipoEvento])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){
@@ -30,26 +45,34 @@ async function getUmEvento(id){
     return resultado
 }
 
-async function getUmLocalEvento(localEvento){
+async function getIdEvento(nome) {
     var resultado = null;
-    const con = await BD.conectar()//espera uma conexão
-    try{
-        var query = await con.query("select * from evento where local=$1", [localEvento])
-        console.log(query.rows)
-        resultado = query.rows
-    }catch(err){
-        console.log(err)
-    }finally{
-        con.release()
+    const con = await BD.conectar();
+
+    try {
+        var query = await con.query("SELECT id FROM evento WHERE nome = $1", [nome]);
+
+        // Verifica se a consulta retornou algum resultado
+        if (query.rows.length > 0) {
+            resultado = query.rows[0].id;  // Extrai o valor do ID do primeiro resultado
+            console.log(resultado)
+        }
+    } catch (err) {
+        console.error(err);
+    } finally {
+        con.release();
     }
-    return resultado
+
+    return resultado;
 }
 
-async function criaEvento(nome, local, data, capacidade, arrecadacao, duracao, arte){
+
+
+async function criaEvento(nome, local, data, descricao, tipoEvento, duracao, arte){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("insert into evento(nome, local, data, capacidade, arrecadacao, duracao, arte) values ($1, $2, $3, $4, $5, $6, $7) returning *", [nome, local, data, capacidade, arrecadacao, duracao, arte])
+        var query = await con.query("insert into evento(nome, local, data,descricao, tipoEvento, duracao, arte) values ($1, $2, $3, $4, $5, $6, $7) returning *", [nome, local, data, descricao, tipoEvento, duracao, arte])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){
@@ -75,11 +98,11 @@ async function excluiEvento(id){
     return resultado
 }
 
-async function alteraEvento(id, nome, local, data, capacidade, arrecadacao, duracao, arte){
+async function alteraEvento(idold, idnew, nome, local, data, descricao, tipoEvento, duracao, arte){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("update ingresso set nome=$1, local=$2, data=$3, capacidade=$4, arrecadacao=$5, duracao=$6, arte=$7 where id=$8 returning *", [nome, local, data, capacidade, arrecadacao, duracao, arte, id])
+        var query = await con.query("update evento set nome=$1, local=$2, data=$3, descricao=$4, tipoEvento=$5, duracao=$6, arte=$7, id=$8 where id=$9 returning *", [nome, local, data, descricao, tipoEvento, duracao, arte, idnew, idold])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){
@@ -90,4 +113,4 @@ async function alteraEvento(id, nome, local, data, capacidade, arrecadacao, dura
     return resultado
 }
 
-export default {getTodosEventos, getUmEvento, getUmLocalEvento, criaEvento, excluiEvento, alteraEvento}
+export default {getTodosEventos, getTipoEvento, getUmEvento, getIdEvento, criaEvento, excluiEvento, alteraEvento}

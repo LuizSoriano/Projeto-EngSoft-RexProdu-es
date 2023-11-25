@@ -33,11 +33,10 @@ async function alteraShow(req, res){
     const hora = req.body.hora
     const atracao = req.body.atracao
     const palco = req.body.palco
-    const localEvento = req.body.localEvento
     //validação dos dados
     var resultado = null
     //chamada para o services
-    resultado = await showServices.alteraShow(id, hora, atracao, palco, localEvento)
+    resultado = await showServices.alteraShow(id, hora, atracao, palco)
     res.send(resultado)
 }
 

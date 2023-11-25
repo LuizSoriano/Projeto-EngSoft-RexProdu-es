@@ -2,28 +2,31 @@ import pg from 'pg'//npm install pg
 
 import eventoPersistence from '../persistence/evento.persistence.js'
 import res from 'express/lib/response.js'
-import showServices from './show.services.js'
-import ingressoServices from './ingresso.services.js'
 
-async function getTodosEventos(){
+async function getTodosEventos(id){
     //chama presistência
-    return await showPersistence.getTodosEventos()
+    return await eventoPersistence.getTodosEventos(id)
+}
+
+async function getTipoEvento(tipoEvento){
+    //chama presistência
+    return await eventoPersistence.getTipoEvento(tipoEvento)
 }
 
 async function getUmEvento(id){
      //chama presistência
-    return await showPersistence.getUmEvento(id)
+    return await eventoPersistence.getUmEvento(id)
 }
 
-async function criaEvento(nome, local, data, capacidade, arrecadacao, duracao, arte, hora, atracao, palco, titulo, tipo, valor, descricao, tipoEvento){
+async function criaEvento(nome, local, data, descricao, tipoEvento, duracao, arte, hora, atracao, palco, titulo, tipo, valor){
     //regra de negócio
     var resultado = null
-    var resultado1 = null
     //chamar services
-    resultado = await ingressoServices.criaIngresso(titulo, tipo, valor, descricao, tipoEvento)
-    resultado = await eventoPersistence.criaEvento(nome, local, data, capacidade, arrecadacao, duracao, arte)
-    resultado1 = await showServices.criaShow(hora, atracao, palco, local)
+    resultado = await eventoPersistence.criaEvento(nome, local, data, descricao, tipoEvento, duracao, arte)
+    var id = await eventoPersistence.getIdEvento(nome)
     //chamar persistência
+    var resultado1 = await ingressoServices.criaIngresso(titulo, tipo, valor, id)
+    resultado1 = await showServices.criaShow(hora, atracao, palco, id)
     return resultado
 }
 
@@ -38,16 +41,17 @@ async function excluiEvento(id){
     
 }
 
-async function alteraEvento(id, nome, local, data, capacidade, arrecadacao, duracao){
+async function alteraEvento(idold, idnew, nome, local, data, descricao, tipoEvento, duracao, arte){
     //regra de negócio
-    var evento = await showPersistence.getUmShow(id)
+    var id1 = await eventoPersistence.getUmEvento(idold)
+    var id2 = await eventoPersistence.getUmEvento(idnew)
     var resultado = null
     //chamar persistência
-    if(evento.length > 0){
-        resultado = await eventoPersistence.alteraEvento(id, nome, local, data, capacidade, arrecadacao, duracao)
+    if(id1.length > 0 && id2 == 0){
+        resultado = await eventoPersistence.alteraEvento(idold, idnew, nome, local, data, descricao, tipoEvento, duracao, arte)
     }
     return resultado
 }
 
 
-export default {getTodosEventos, getUmEvento, criaEvento, excluiEvento, alteraEvento}
+export default {getTodosEventos, getTipoEvento, getUmEvento, criaEvento, excluiEvento, alteraEvento}

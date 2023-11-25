@@ -21,7 +21,7 @@ async function getUmCliente(cpf){
     try{
         var query = await con.query("select * from cliente where cpf=$1", [cpf])
         console.log(query.rows)
-        resultado = query.rows
+        resultado = query,rows
     }catch(err){
         console.log(err)
     }finally{
@@ -30,11 +30,11 @@ async function getUmCliente(cpf){
     return resultado
 }
 
-async function criaCliente(cpf, nome, salario, nasc){
+async function criaCliente(cpf, nome, email, senha){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("insert into cliente(cpf, nome, salario, nasc) values ($1, $2, $3, $4) returning *", [cpf, nome, salario, nasc])
+        var query = await con.query("insert into cliente(cpf, nome, email, senha) values ($1, $2, $3, $4) returning *", [cpf, nome, email, senha])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){
@@ -60,11 +60,11 @@ async function excluiCliente(cpf){
     return resultado
 }
 
-async function alteraCliente(cpfold, cpfnew, nome, salario, nasc){
+async function alteraCliente(cpfold, cpfnew, nome, email, senha){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("update cliente set cpf=$1, nome=$2, salario=$3, nasc=$4 where cpf=$5 returning *", [cpfnew, nome, salario, nasc, cpfold])
+        var query = await con.query("update cliente set cpf=$1, nome=$2, email=$3, senha+=$4 where cpf=$5 returning *", [cpfnew, nome, email, senha, cpfold])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){

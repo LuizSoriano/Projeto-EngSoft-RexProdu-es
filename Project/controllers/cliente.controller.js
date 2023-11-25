@@ -22,6 +22,20 @@ async function getUmCliente(req, res){
     //res.send(JSON.stringify(resultado))
 }
 
+async function logarCliente(req, res){
+    //capturar dados
+    const email = req.body.email
+    const senha = req.body.senha
+    var resultado = null
+
+    //validar dados
+    //chama SERVICES
+    resultado = await clienteServices.logarCliente(email, senha)
+    res.send(resultado)
+    //const resultado = await clienteServices.getTodosClientes()
+    //res.send(JSON.stringify(resultado))
+}
+
 function cpfValido(cpf) {
     // Remova caracteres não numéricos
     cpf = cpf.replace(/[^\d]/g, '');
@@ -63,13 +77,13 @@ async function criaCliente(req, res){
     //capturar dados
     const cpf = req.body.cpf
     const nome = req.body.nome
-    const salario = req.body.salario
-    const nasc = req.body.nasc
+    const email = req.body.email
+    const senha = req.body.senha
     //validação dos dados
 
 
     //chamada para o services
-    const resultado = await clienteServices.criaCliente(cpf, nome, salario, nasc)
+    const resultado = await clienteServices.criaCliente(cpf, nome, email, senha)
     res.send(resultado)
 }
 
@@ -89,14 +103,14 @@ async function alteraCliente(req, res){
     const cpfold = req.params.cpf
     const cpfnew = req.body.cpf
     const nome = req.body.nome
-    const salario = req.body.salario
-    const nasc = req.body.nasc
+    const email = req.body.email
+    const senha = req.body.senha
     //validação dos dados
 
 
     //chamada para o services
-    const resultado = await clienteServices.alteraCliente(cpfold, cpfnew, nome, salario, nasc)
+    const resultado = await clienteServices.alteraCliente(cpfold, cpfnew, nome, email, senha)
     res.send(resultado)
 }
 
-export default {getTodosClientes, getUmCliente, cpfValido, criaCliente, excluiCliente, alteraCliente}
+export default {getTodosClientes, getUmCliente, logarCliente, cpfValido, criaCliente, excluiCliente, alteraCliente}

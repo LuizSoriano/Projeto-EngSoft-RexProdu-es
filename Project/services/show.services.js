@@ -22,11 +22,11 @@ async function testeShowArtista(nome){
     return false
 }
 
-async function criaShow(hora, atracao, palco, localEvento){
+async function criaShow(hora, atracao, palco, id){
     //regra de negócio
     var resultado = null
     //chamar persistência
-    resultado = await showPersistence.criaShow(hora, atracao, palco, localEvento)
+    resultado = await showPersistence.criaShow(hora, atracao, palco, id)
     return resultado
 }
 
@@ -41,14 +41,13 @@ async function excluiShow(id){
     
 }
 
-async function alteraShow(id, hora, atracao, palco, localEvento){
+async function alteraShow(id, hora, atracao, palco){
     //regra de negócio
     var show = await showPersistence.getUmShow(id)
-    var localEvento = await eventoPersistence.getUmLocalEvento(localEvento)
     var resultado = null
     //chamar persistência
-    if(show.length > 0 && localEvento.length > 0){
-        resultado = await showPersistence.alteraShow(id, hora, atracao, palco, localEvento)
+    if(show.length > 0){
+        resultado = await showPersistence.alteraShow(id, hora, atracao, palco)
     }
     return resultado
 }

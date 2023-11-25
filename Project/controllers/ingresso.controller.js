@@ -33,12 +33,10 @@ async function alteraIngresso(req, res){
     const titulo = req.body.titulo
     const tipo = req.body.tipo
     const valor = req.body.valor
-    const descricao = req.body.descricao
-    const tipoEvento = req.body.tipoEvento
     //validação dos dados
     var resultado = null
     //chamada para o services
-    resultado = await showServices.alterashow(id, titulo, tipo, valor, descricao, tipoEvento)
+    resultado = await showServices.alterashow(id, titulo, tipo, valor)
     res.send(resultado)
 }
 

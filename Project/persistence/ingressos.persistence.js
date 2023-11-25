@@ -30,11 +30,11 @@ async function getUmIngresso(id){
     return resultado
 }
 
-async function criaIngresso(titulo, tipo, valor, descricao, tipoEvento){
+async function criaIngresso(titulo, tipo, valor, id){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("insert into ingresso(titulo, tipo, valor, descricao, tipoEvento) values ($1, $2, $3, $4, $5) returning *", [titulo, tipo, valor, descricao, tipoEvento])
+        var query = await con.query("insert into ingresso(titulo, tipo, valor, idEvento) values ($1, $2, $3, $4) returning *", [titulo, tipo, valor, id])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){
@@ -60,11 +60,11 @@ async function excluiIngresso(id){
     return resultado
 }
 
-async function alteraIngresso(id, titulo, tipo, valor, descricao, tipoEvento){
+async function alteraIngresso(id, titulo, tipo, valor){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("update ingresso set titulo=$1, tipo=$2, valor=$3, descricao=$4, tipoEvento=$5 where id=$6 returning *", [titulo, tipo, valor, descricao, tipoEvento, id])
+        var query = await con.query("update ingresso set titulo=$1, tipo=$2, valor=$3, where id=$4 returning *", [titulo, tipo, valor, id])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){

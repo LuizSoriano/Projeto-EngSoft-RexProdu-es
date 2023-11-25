@@ -13,13 +13,21 @@ async function getUmCliente(cpf){
     return await clientePersistence.getUmCliente(cpf)
 }
 
-async function criaCliente(cpf, nome, salario, nasc){
+async function logarCliente(email, senha){
+    //chama presistência
+   var resultado = await clientePersistence.logarCliente(email, senha)
+   if(resultado.length > 0)
+    return true
+   return false 
+}
+
+async function criaCliente(cpf, nome, email, senha){
     //regra de negócio
     var resultado = null
     var cliente = await clientePersistence.getUmCliente(cpf)
     //chamar persistência
     if(cliente.length == 0)
-        resultado = await clientePersistence.criaCliente(cpf, nome, salario, nasc)
+        resultado = await clientePersistence.criaCliente(cpf, nome, email, senha)
     return resultado
 }
 
@@ -33,14 +41,14 @@ async function excluiCliente(cpf){
     return resultado
 }
 
-async function alteraCliente(cpfold, cpfnew, nome, salario, nasc){
+async function alteraCliente(cpfold, cpfnew, nome, email, senha){
     //regra de negócio
     var clienteold = await clientePersistence.getUmCliente(cpfold)
     var clientenew = await clientePersistence.getUmCliente(cpfnew)
     var resultado = null
     //chamar persistência
     if(clienteold.length == 1 && clientenew.length == 0)
-        resultado = await clientePersistence.alteraCliente(cpfold, cpfnew, nome, salario, nasc)
+        resultado = await clientePersistence.alteraCliente(cpfold, cpfnew, nome, email, senha)
     return resultado
 }
 

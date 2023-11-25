@@ -45,11 +45,11 @@ async function getShowArtista(nome){
     return resultado
 }
 
-async function criaShow(hora, atracao, palco, localEvento){
+async function criaShow(hora, atracao, palco, id){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("insert into show(hora, atracao, palco, local) values ($1, $2, $3, $4) returning *", [hora, atracao, palco, localEvento])
+        var query = await con.query("insert into show(hora, atracao, palco, idEvento) values ($1, $2, $3, $4) returning *", [hora, atracao, palco, id])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){
@@ -75,11 +75,11 @@ async function excluiShow(id){
     return resultado
 }
 
-async function alteraShow(id, hora, atracao, palco, localEvento){
+async function alteraShow(id, hora, atracao, palco){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("update show set hora=$1, atracao=$2, palco=$3, local=$4, where id=$5 returning *", [hora, atracao, palco, localEvento, id])
+        var query = await con.query("update show set hora=$1, atracao=$2, palco=$3, where id=$4 returning *", [hora, atracao, palco, id])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){

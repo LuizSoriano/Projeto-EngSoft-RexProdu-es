@@ -1,8 +1,8 @@
 CREATE TABLE cliente (
  cpf varchar(11) PRIMARY KEY,
  nome varchar(50) NOT NULL, 
- salario numeric(10, 2) NOT NULL,
- nasc date
+ email varchar(200) NOT NULL,
+ senha varchar(255) NOT NULL
 );
 
 CREATE TABLE artista (
