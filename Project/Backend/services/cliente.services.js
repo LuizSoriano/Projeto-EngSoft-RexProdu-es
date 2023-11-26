@@ -24,10 +24,8 @@ async function logarCliente(email, senha){
 async function criaCliente(cpf, nome, email, senha){
     //regra de negócio
     var resultado = null
-    var cliente = await clientePersistence.getUmCliente(cpf)
     //chamar persistência
-    if(cliente.length == 0)
-        resultado = await clientePersistence.criaCliente(cpf, nome, email, senha)
+    resultado = await clientePersistence.criaCliente(cpf, nome, email, senha)
     return resultado
 }
 
@@ -53,4 +51,4 @@ async function alteraCliente(cpfold, cpfnew, nome, email, senha){
 }
 
 
-export default {getTodosClientes, getUmCliente, criaCliente, excluiCliente, alteraCliente}
+export default {getTodosClientes, getUmCliente, logarCliente, criaCliente, excluiCliente, alteraCliente}

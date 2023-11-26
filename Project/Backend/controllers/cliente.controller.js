@@ -7,6 +7,7 @@ async function getTodosClientes(req, res){
     res.send(JSON.stringify(resultado))
 }
 
+
 async function getUmCliente(req, res){
     //capturar dados
     const cpf = req.params.cpf
@@ -24,8 +25,8 @@ async function getUmCliente(req, res){
 
 async function logarCliente(req, res){
     //capturar dados
-    const email = req.body.email
-    const senha = req.body.senha
+    const email = req.params.email
+    const senha = req.params.senha
     var resultado = null
 
     //validar dados

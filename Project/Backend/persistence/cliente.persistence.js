@@ -21,7 +21,22 @@ async function getUmCliente(cpf){
     try{
         var query = await con.query("select * from cliente where cpf=$1", [cpf])
         console.log(query.rows)
-        resultado = query,rows
+        resultado = query.rows
+    }catch(err){
+        console.log(err)
+    }finally{
+        con.release()
+    }
+    return resultado
+}
+
+async function logarCliente(email, senha){
+    var resultado = null;
+    const con = await BD.conectar()//espera uma conexão
+    try{
+        var query = await con.query("select * from cliente where email=$1 and senha=$2", [email, senha])
+        console.log(query.rows)
+        resultado = query.rows
     }catch(err){
         console.log(err)
     }finally{
@@ -75,4 +90,4 @@ async function alteraCliente(cpfold, cpfnew, nome, email, senha){
     return resultado
 }
 
-export default {getTodosClientes, getUmCliente, criaCliente, excluiCliente, alteraCliente}
+export default {getTodosClientes, getUmCliente, logarCliente, criaCliente, excluiCliente, alteraCliente}

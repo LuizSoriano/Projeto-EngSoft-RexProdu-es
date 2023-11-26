@@ -1,6 +1,8 @@
 import pg from 'pg'//npm install pg
 
 import eventoPersistence from '../persistence/evento.persistence.js'
+import ingressoServices from './ingresso.services.js'
+import showServices from './show.services.js'
 import res from 'express/lib/response.js'
 
 async function getTodosEventos(id){
