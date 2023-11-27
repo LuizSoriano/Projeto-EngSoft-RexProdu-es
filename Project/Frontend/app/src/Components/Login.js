@@ -15,6 +15,10 @@ function Login(){
     const response = await axios.get(url)
 
     // Fazer algo com a resposta...
+    if(response.data === false)
+      console.log("Usuário ou senha incorretos");
+    else
+      console.log("Achamos você")
     console.log(response.data);
   } catch (error) {
     // Lidar com erros...

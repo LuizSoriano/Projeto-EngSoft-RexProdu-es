@@ -5,6 +5,7 @@ import artistaRouter from './routes/artista.routes.js'
 import showRouter from './routes/show.routes.js'
 import ingressoRouter from './routes/ingresso.routes.js'
 import eventoRouter from './routes/evento.routes.js'
+import ingressoClienteRouter from './routes/ingressoCliente.routes.js'
 import cors from 'cors'
 const app = express()
 
@@ -23,6 +24,7 @@ app.use("/artista", artistaRouter)
 app.use("/show", showRouter)
 app.use("/ingresso", ingressoRouter)
 app.use("/evento", eventoRouter)
+app.use("/clienteingresso", ingressoClienteRouter)
 
 app.listen(3000, mensagemServidor)
 
