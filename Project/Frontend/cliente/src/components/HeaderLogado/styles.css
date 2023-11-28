@@ -1,0 +1,11 @@
+.ulLogado {
+    display: flex;
+    flex-direction: row;
+    width: 230px;
+    padding-right: 30px;
+}
+
+.meusingressos {
+    color: #fff;
+    font-weight: bolder;
+}

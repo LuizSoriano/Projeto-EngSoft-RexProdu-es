@@ -1,0 +1,195 @@
+.divDetalhes {
+    background-color: #FAFAFA;
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100vw;
+}
+
+.divImagem {
+    height: 580px;
+}
+
+.imagemEvento {
+    height: 100%;
+    width: 100%;
+}
+
+.subDiv {
+    width: 100%;
+    height: 100%;
+}
+
+.gerall {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.ingresso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 120px;
+}
+
+
+.ingresso h2 {
+    font-size: 20px;
+    font-weight: bolder;
+    padding-bottom: 20px;
+}
+
+.caixaIngressos {
+    background-color: #f1f1f1;
+    border: 1px solid #a5a5a5;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 7px;
+}
+
+.caixaIngressos p {
+    font-size: 22px;
+}
+
+.buttonIngressos {
+    border: none;
+    background-color: rgb(4, 186, 33);
+    color: #FFF;
+    font-weight: bolder;
+    width: 330px;
+    height: 60px;
+    font-size: 20px;
+}
+
+.botaoVerde {
+    color: #fff;
+}
+
+.total hr {
+    background-color: #000;
+    border: 1px solid #000;
+    width: 450px;
+    height: 1px;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.contadores {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.total div {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 130px;
+    justify-content: space-between;
+}
+
+.nome {
+    font-size: 50px;
+}
+
+.descricao {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 500px;
+}
+
+.dataLoc {
+    padding-top: 33px;
+    font-weight: bold;
+}
+
+.data {
+    display: flex;
+    flex-direction: row;
+    width: 125px;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.loc {
+    display: flex;
+    flex-direction: row;
+    width: 130px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dataLoc img {
+    width: 20px;
+    height: 20px;
+}
+
+.atracoes {
+    margin-top: 40px;
+}
+
+.atracao {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.atracao span {
+    font-size: 20px;
+    display: list-item;
+    padding-left: 0px;
+}
+
+.atracoes h2 {
+    font-size: 20px;
+}
+
+.atracoes ul {
+    list-style-type: "★";
+    list-style-position: inside;
+}
+
+.atracao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.setores {
+    margin-top: 60px;
+}
+
+.setores h2 {
+    font-size: 22px;
+}
+
+.setores li {
+    font-size: 22px;
+    padding-top: 20px;
+}
+
+.setores li strong {
+    font-size: 22px;
+}
+
+.setores ul {
+    list-style-type: disc;
+    list-style-position: inside;
+}
