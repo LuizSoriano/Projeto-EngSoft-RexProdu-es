@@ -3,8 +3,7 @@ import eventoServices from '../services/evento.services.js'
 
 async function getTodosEventos(req, res){
     //chama SERVICES
-    const id = req.params.id
-    const resultado = await eventoServices.getTodosEventos(id)
+    const resultado = await eventoServices.getTodosEventos()
     res.send(JSON.stringify(resultado))
 }
 
@@ -15,7 +14,17 @@ async function getTipoEvento(req, res){
     res.send(JSON.stringify(resultado))
 }
 
+async function verEvento(req, res){
+    //capturar dados
+    const tipoEvento = req.params.tipoEvento
+    const id = req.params.id
+    var resultado = null
 
+    //validar dados
+    //chama SERVICES
+    resultado = await eventoServices.verEvento(tipoEvento, id)
+    res.send(resultado)
+}
 
 async function criaEvento(req, res){
     //capturar dados
@@ -66,4 +75,4 @@ async function alteraEvento(req, res){
     res.send(resultado)
 }
 
-export default {getTodosEventos, getTipoEvento, criaEvento, excluiEvento, alteraEvento}
+export default {getTodosEventos, getTipoEvento, verEvento, criaEvento, excluiEvento, alteraEvento}

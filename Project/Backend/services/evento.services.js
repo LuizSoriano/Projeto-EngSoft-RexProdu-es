@@ -5,14 +5,19 @@ import ingressoServices from './ingresso.services.js'
 import showServices from './show.services.js'
 import res from 'express/lib/response.js'
 
-async function getTodosEventos(id){
+async function getTodosEventos(){
     //chama presistência
-    return await eventoPersistence.getTodosEventos(id)
+    return await eventoPersistence.getTodosEventos()
 }
 
 async function getTipoEvento(tipoEvento){
     //chama presistência
     return await eventoPersistence.getTipoEvento(tipoEvento)
+}
+
+async function verEvento(tipoEvento, id){
+    //chama presistência
+    return await eventoPersistence.getTipoEvento(tipoEvento, id)
 }
 
 async function getUmEvento(id){
@@ -56,4 +61,4 @@ async function alteraEvento(idold, idnew, nome, local, data, descricao, tipoEven
 }
 
 
-export default {getTodosEventos, getTipoEvento, getUmEvento, criaEvento, excluiEvento, alteraEvento}
+export default {getTodosEventos, getTipoEvento, verEvento, getUmEvento, criaEvento, excluiEvento, alteraEvento}

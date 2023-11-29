@@ -1,10 +1,10 @@
 import BD from './BD.js'
 
-async function getTodosEventos(id){
+async function getTodosEventos(){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("SELECT evento.nome, show.atracao, data, local, titulo, descricao FROM evento JOIN ingresso ON evento.id = ingresso.idEvento JOIN show ON evento.id = show.idEvento where evento.id=$1", [id])
+        var query = await con.query("select * from evento")
         console.log(query.rows)
         resultado = query.rows
     }catch(err){
@@ -20,6 +20,21 @@ async function getTipoEvento(tipoEvento){
     const con = await BD.conectar()//espera uma conexão
     try{
         var query = await con.query("select nome, local, data from evento where tipoEvento=$1", [tipoEvento])
+        console.log(query.rows)
+        resultado = query.rows
+    }catch(err){
+        console.log(err)
+    }finally{
+        con.release()
+    }
+    return resultado
+}
+
+async function verEvento(tipoEvento, id){
+    var resultado = null;
+    const con = await BD.conectar()//espera uma conexão
+    try{
+        var query = await con.query("SELECT evento.nome, show.atracao, data, local, titulo, descricao FROM evento JOIN ingresso ON evento.id = ingresso.idEvento JOIN show ON evento.id = show.idEvento where evento.id=$1 and evento.tipoEvento=$2", [id, tipoEvento])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){
@@ -113,4 +128,4 @@ async function alteraEvento(idold, idnew, nome, local, data, descricao, tipoEven
     return resultado
 }
 
-export default {getTodosEventos, getTipoEvento, getUmEvento, getIdEvento, criaEvento, excluiEvento, alteraEvento}
+export default {getTodosEventos, getTipoEvento, verEvento, getUmEvento, getIdEvento, criaEvento, excluiEvento, alteraEvento}
