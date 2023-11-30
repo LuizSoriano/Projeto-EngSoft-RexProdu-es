@@ -24,11 +24,6 @@ function Festivais() {
                     </li>
                 </ul>
                 <Evento/>
-                <Evento/>
-                <Evento/>
-                <Evento/>
-                <Evento/>
-                <Evento/>
             </section>
             <Footer/>
         </div>

@@ -24,11 +24,6 @@ function Todos() {
                     </li>
                 </ul>
                 <Evento/>
-                <Evento/>
-                <Evento/>
-                <Evento/>
-                <Evento/>
-                <Evento/>
             </section>
             <Footer/>
         </div>

@@ -16,13 +16,13 @@ async function getTipoEvento(req, res){
 
 async function verEvento(req, res){
     //capturar dados
-    const tipoEvento = req.params.tipoEvento
+
     const id = req.params.id
     var resultado = null
 
     //validar dados
     //chama SERVICES
-    resultado = await eventoServices.verEvento(tipoEvento, id)
+    resultado = await eventoServices.verEvento(id)
     res.send(resultado)
 }
 

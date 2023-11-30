@@ -5,9 +5,40 @@ import './styles.css'
 import ImagemProvisoria from '../../images/balacobaco.png'
 import Localizacao from '../../images/loc.png'
 import Data from '../../images/data.png'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
+import axios from 'axios'
+import { useState, useEffect } from "react";
 
 function Detalhes () {
+
+    const {id} = useParams()
+
+    const [eventos, setEvento] = useState([])
+
+    const getDetalhes = async() => {
+        try {
+            const response = await axios.get(`http://localhost:3000/evento/tipoEvento/${id}`)
+
+            const data = response.data;
+            console.log(data)
+            setEvento(data);
+        } catch (errr) {
+            console.log(errr)
+        }
+    }
+
+    const getIngressos = async() => {
+        try {
+            const response = await axios.get(`http://localhost:3000/ingresso`)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        getDetalhes()
+    }, [])
+
     return(
         <div className="divDetalhes">
             <Header />
@@ -16,54 +47,43 @@ function Detalhes () {
                     <img src={ImagemProvisoria} alt="" className="imagemEvento"/>
                 </div>
                 <div className="gerall">
-                    <div className="descricao">
-                        <div>
-                            <h1 className="nome">Nome do Evento</h1>
+                    
+                <div className="descricao">
+                    {eventos.length === 0 ? (<p>Carregando...</p>) : (
+                        eventos.map((evento) => (
+                            <div>
+                            <h1 className="nome">{evento.nome}</h1>
                             <div className="dataLoc">
                                 <div className="data">
                                     <img src={Data} alt="" />
-                                    <p>Data do Evento</p>
+                                    <p>{evento.data}</p>
                                 </div>
                                 <div className="loc">
                                     <img src={Localizacao} alt="" />
-                                    <p>Local do Evento</p>
+                                    <p>{evento.local}</p>
                                 </div>
                             </div>
-                        </div>
+                            
+                        
+                
                         <div className="atracoes">
                             <h2>Atrações</h2>
                             <ul className="listaAtracoes">
                                 <li className="atracao">
-                                    <span>Atração 1</span>
-                                </li>
-                                <li className="atracao">
-                                    <span>Atração 1</span>
-                                </li>
-                                <li className="atracao" >
-                                    <span>Atração 1</span>
-                                </li>
-                                <li className="atracao">
-                                    <span>Atração 1</span>
+                                    <span>{evento.atracao}</span>
                                 </li>
                             </ul>
                         </div>
+                        
                         <div className="setores">
-                            <h2>Setores:</h2>
+                            <h2>Descricao:</h2>
                             <ul>
-                                <li className="setor">
-                                    <strong>Área Vip:</strong> Classificação 14 anos
-                                </li>
-                                <li className="setor">
-                                    <strong>Front Stage:</strong> Vodka, Gin, Cerveja, Amstel, Tônica, Suco, Regri e Água. De frente ao palco com open
-                                </li>
-                                <li className="setor">
-                                    <strong>Camarote Gold:</strong> Vodka, Gin, Cerveja, Amstel, Tônica, Suco, Regri e Água. De frente ao palco com open Vodka, Gin, Cerveja, Amstel, Tônica, Suco, Regri e Água. De frente ao palco com open
-                                </li>
-                                <li className="setor">
-                                    <strong>Camarote Black:</strong> Vodka, Gin, Cerveja, Amstel, Tônica, Suco, Regri e Água. De frente ao palco com open Vodka, Gin, Cerveja, Amstel, Tônica, Suco, Regri e Água. De frente ao palco com open Vodka, Gin, Cerveja, Amstel, Tônica
-                                </li>
+                                <li>{evento.descricao}</li>
                             </ul>
                         </div>
+                        </div>
+                        ))
+                    )}
                     </div>
                     <div>
                         <div className="ingresso">
