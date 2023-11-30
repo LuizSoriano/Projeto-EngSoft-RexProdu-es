@@ -30,11 +30,11 @@ async function getTipoEvento(tipoEvento){
     return resultado
 }
 
-async function verEvento(tipoEvento, id){
+async function verEvento(id){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("SELECT evento.nome, show.atracao, data, local, titulo, descricao FROM evento JOIN ingresso ON evento.id = ingresso.idEvento JOIN show ON evento.id = show.idEvento where evento.id=$1 and evento.tipoEvento=$2", [id, tipoEvento])
+        var query = await con.query("SELECT evento.nome, show.atracao, data, local, titulo, descricao FROM evento JOIN ingresso ON evento.id = ingresso.idEvento JOIN show ON evento.id = show.idEvento where evento.id=$1", [id])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){

@@ -15,9 +15,9 @@ async function getTipoEvento(tipoEvento){
     return await eventoPersistence.getTipoEvento(tipoEvento)
 }
 
-async function verEvento(tipoEvento, id){
+async function verEvento(id){
     //chama presistência
-    return await eventoPersistence.getTipoEvento(tipoEvento, id)
+    return await eventoPersistence.verEvento(id)
 }
 
 async function getUmEvento(id){

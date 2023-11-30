@@ -1,0 +1,89 @@
+.descricao {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 500px;
+}
+
+.dataLoc {
+    padding-top: 33px;
+    font-weight: bold;
+}
+
+.data {
+    display: flex;
+    flex-direction: row;
+    width: 125px;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.loc {
+    display: flex;
+    flex-direction: row;
+    width: 130px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dataLoc img {
+    width: 20px;
+    height: 20px;
+}
+
+.atracoes {
+    margin-top: 40px;
+}
+
+.atracao {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.atracao span {
+    font-size: 20px;
+    display: list-item;
+    padding-left: 0px;
+}
+
+.atracoes h2 {
+    font-size: 20px;
+}
+
+.atracoes ul {
+    list-style-type: "★";
+    list-style-position: inside;
+}
+
+.atracao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.setores {
+    margin-top: 60px;
+}
+
+.setores h2 {
+    font-size: 22px;
+}
+
+.setores li {
+    font-size: 22px;
+    padding-top: 20px;
+}
+
+.setores li strong {
+    font-size: 22px;
+}
+
+.setores ul {
+    list-style-type: disc;
+    list-style-position: inside;
+}
