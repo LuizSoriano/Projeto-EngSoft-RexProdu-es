@@ -9,12 +9,12 @@ async function getTodosIngressos(req, res){
 
 async function getUmIngresso(req, res){
     //capturar dados
-    const id = req.params.id
+    const idEvento = req.params.idEvento
     var resultado = null
 
     //validar dados
     //chama SERVICES
-    resultado = await ingressoServices.getUmIngresso(id)
+    resultado = await ingressoServices.getUmIngresso(idEvento)
     res.send(resultado)
 }
 

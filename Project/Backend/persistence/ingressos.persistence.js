@@ -15,11 +15,11 @@ async function getTodosIngressos(){
     return resultado
 }
 
-async function getUmIngresso(id){
+async function getUmIngresso(idEvento){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("select * from ingresso where id=$1", [id])
+        var query = await con.query("select titulo from ingresso where idEvento=$1", [idEvento])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){

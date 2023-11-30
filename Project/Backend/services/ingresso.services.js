@@ -8,9 +8,9 @@ async function getTodosIngressos(){
     return await ingressoPersistence.getTodosIngressos()
 }
 
-async function getUmIngresso(id){
+async function getUmIngresso(idEvento){
      //chama presistência
-    return await ingressoPersistence.getUmIngresso(id)
+    return await ingressoPersistence.getUmIngresso(idEvento)
 }
 
 async function criaIngresso(titulo, tipo, valor, id){
