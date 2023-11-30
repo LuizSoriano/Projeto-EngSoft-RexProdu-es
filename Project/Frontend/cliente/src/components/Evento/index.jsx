@@ -4,6 +4,7 @@ import "./styles.css"
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import { useState, useEffect } from "react";
+import { format } from "date-fns"; 
 
 function Evento() {
 
@@ -14,8 +15,14 @@ function Evento() {
             const response = await axios.get("http://localhost:3000/evento")
 
             const data = response.data;
+
+            const festivaisFormatados = data.map((festival) => ({
+                ...festival,
+                // Converta a string de data para um objeto Date
+                data: new Date(festival.data),
+              }));
             
-            setFestivais(data);
+            setFestivais(festivaisFormatados);
         } catch (errr) {
             console.log(errr)
         } finally {
@@ -44,7 +51,7 @@ function Evento() {
                          <p>{festival.local}</p>
                         </li>
                         <li>
-                        <p>{festival.data}</p>
+                        <p>{format(festival.data, "dd/MM/yyyy")}</p>
                         </li>
                     </ul>
                     <p>

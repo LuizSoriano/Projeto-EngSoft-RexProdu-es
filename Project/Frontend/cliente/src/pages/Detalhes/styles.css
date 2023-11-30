@@ -87,16 +87,22 @@
 
 .contadores {
     width: 90%;
+    height: 300px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.contadores p strong {
+    font-size: 35px;
 }
 
 .total div {
     padding-top: 20px;
     display: flex;
     flex-direction: row;
-    width: 130px;
+    width: 150px;
     justify-content: space-between;
 }
 
@@ -192,4 +198,20 @@
 .setores ul {
     list-style-type: disc;
     list-style-position: inside;
+}
+
+.contador {
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contador div {
+    font-size: 50px;
+}
+
+.counter {
+    font-size: 50px;
 }

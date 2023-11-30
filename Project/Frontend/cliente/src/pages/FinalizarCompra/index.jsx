@@ -2,9 +2,31 @@ import React from "react";
 import "./styles.css"
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from "react-router-dom";
+import axios from 'axios'
+import { useState, useEffect } from "react";
+
 
 function FinalizarCompra() {
+    const parametros = useParams()
+    const [ingresso, setIngresso] = useState([])
+
+    const getIngressos = async() => {
+        try {
+            const response = await axios.get(`http://localhost:3000/ingresso/${parametros.id}`)
+
+            const data = response.data
+            
+            setIngresso(data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        getIngressos()
+    }, [])
+
     return(
         <div className="finalizarDiv">
             <Header/>
@@ -30,15 +52,19 @@ function FinalizarCompra() {
                         
                     </div>
                     <div className="ingres">
+
                         <div className="ingressoTitulo">
                             <h2>Ingressos</h2>
                         </div>
                         <div>
-                            <p><strong>2x</strong> Área Vip - R$ 180,00</p>
-                            <p><strong>1x</strong> Frontstage Sicoob - R$ 250,00</p>
+                            {ingresso.map((ing) => (
+                                <p>{parametros.cont}x - R$ {ing.valor}</p>
+                            ))}
                         </div>
                         <div>
-                            <p><strong>Total:</strong>      R$ 590,00</p>
+                            {ingresso.map((ing) => (
+                            <p><strong>Total:</strong>      R$ {parametros.cont * ing.valor}</p>
+                            ))}
                         </div>
                         <div className="botones">
                         <Link to='/logado' className="botonesVerde"><button>FINALIZAR COMPRA</button></Link>
