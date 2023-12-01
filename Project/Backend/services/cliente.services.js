@@ -16,9 +16,10 @@ async function getUmCliente(cpf){
 async function logarCliente(email, senha){
     //chama presistência
    var resultado = await clientePersistence.logarCliente(email, senha)
+   var resultado1 = null;
    if(resultado.length > 0)
-    return true
-   return false 
+     resultado1 = await clientePersistence.getIdCliente(email)
+   return resultado1 
 }
 
 async function criaCliente(cpf, nome, email, senha){
