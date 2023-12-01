@@ -14,27 +14,6 @@ import axios from 'axios'
 import { useState, useEffect } from "react";
 
 function App() {
-  const [festivais, setFestivais] = useState([])
-
-    const getFestivais = async() => {
-        try {
-            const response = await axios.get("http://localhost:3000/evento/Festival")
-
-            const data = response.data;
-            
-            setFestivais(data);
-        } catch (errr) {
-            console.log(errr)
-        } finally {
-            response.release()
-        }
-    }
-
-    useEffect(() => {
-        getFestivais()
-    }, [])
-
-
   return (
     <Router>
       <Routes>
@@ -44,7 +23,7 @@ function App() {
         <Route path='/todos' element={<Todos />}/>
         <Route path='/universitarios' element={<Universitarios />}/>
         <Route path={'/tipoEvento/:id'} element={<Detalhes />}></Route>
-        <Route path='/finalizar' element={<FinalizarCompra />}></Route>
+        <Route path='/finalizar/:id/:cont' element={<FinalizarCompra />}></Route>
         <Route path='/logado' element={<HomeLogado />}></Route>
         <Route path='/perfil' element={<Perfil/>}></Route>
         <Route path='/table' element={<Table/>}></Route>

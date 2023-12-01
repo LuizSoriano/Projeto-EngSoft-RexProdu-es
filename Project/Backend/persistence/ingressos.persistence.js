@@ -19,7 +19,7 @@ async function getUmIngresso(idEvento){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("select titulo from ingresso where idEvento=$1", [idEvento])
+        var query = await con.query("select titulo, valor from ingresso where idEvento=$1", [idEvento])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){
