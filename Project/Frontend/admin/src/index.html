@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href = "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet" href ="/src/css/style.css"/>
+    <script src="/src/js/scripts.js" defer></script>
+
+    <title>Rex Produções Administrador</title>
+</head>
+<body>
+    <!----------------------INICIO DA SIDEBAR---------------->
+    <div id="sidebar-e-topbar">
+            <aside class="topbar">
+                <header>
+                    <img class="logo-rex" src="../public/logo-r.svg" alt="Logo Rex"/>
+                </header>
+            </aside>
+
+            <aside class="sidebar">
+
+                <nav>
+
+                    <button>
+                        <span>
+                            <i class="material-symbols-outlined">Celebration</i>
+                            <span>Eventos</span>
+                        </span>
+                    </button>
+
+                    <button onclick="paraArtistas()">
+                        <span>
+                            <i class="material-symbols-outlined">Artist</i>
+                            <span>Artistas</span>
+                        </span>
+                    </button>
+
+                    <button>
+                        <span>
+                            <i class="material-symbols-outlined">Settings</i>
+                            <span>Configurações</span>
+                        </span>
+                    </button>
+
+                    <button>
+                        <span>
+                            <i class="material-symbols-outlined">Logout</i>
+                            <span>Sair</span>
+                        </span>
+                    </button>
+
+                </nav>
+            </aside>
+        </div>
+        <!----------------------FINAL DA SIDEBAR---------------->
+
+        <!-- BOTAO ADICIONAR EVENTO  -->
+        <button class="add">
+            <span>Adicionar Evento</span>
+        </button>
+    
+        <!--MOSTRA OS EVENTOS-->
+        <div class="bloco-infos" id="mostra-eventos">
+            <div class="simbolosSobEventos">
+                <div>Evento</div>
+                <i class="material-symbols-outlined">location_on</i>
+                <i class="material-symbols-outlined">event_available</i>
+                <i class="material-symbols-outlined">groups</i>
+                <i class="material-symbols-outlined">attach_money</i>
+            </div>
+
+            <!--FORMULARIO ADICIONAR EVENTO-->
+            <div class="modal">
+                <form id="from-add-evento">
+                    <div class="formAddEvento">
+
+                        <h2>Adicionar Evento</h2>
+                        <input class="allImputs" type="text" id="nome-evento" placeholder="Nome Evento"/>
+                        <input class="allImputs" type="text" id="local-evento" placeholder="Local Evento"/>
+                        <input class="allImputs" type="date" id="data-evento" />
+                        <input class="allImputs" type="text" id="nome-artista" placeholder="Atração" />
+                        <input class="allImputs" type="time" id="tempo-inicio"/>
+                        <input class="allImputs" type="text" id="nome-palco" placeholder="Palco" />
+                        <input class="allImputs" type="text" id="nome-ingresso" placeholder="Titulo Ingresso" />
+                        <input class="allImputs" type="text" id="tipo-ingresso" placeholder="Tipo" />
+                        <input class="allImputs" type="number" id="valor" placeholder="Valor" />
+                        
+                        <label for="tiposEvento">Tipo de Evento</label>
+
+                        <select class="allImputs" name="tiposEvento" id="tiposEv">
+                            <option value="Festival">Festival</option>
+                            <option value="Show">Show</option>
+                            <option value="RoleUniv">Role Universitario</option>
+                        </select>
+
+                        <label for="fotoEv">Arte do Evento</label>
+                        <input style="margin:5px" name="fotoEv" type="file" id="imgEv" accept="/image">
+
+                        <div style="flex-direction:row">
+                            <button class="finalizarEv" id="btnFinalizar" type="submit">
+                                <span>FINALIZAR</span>
+                            </button>
+    
+                            <button class="cancelarEv" onclick="switchModal()" type="reset">
+                                <span>CANCELAR</span>
+                            </button>
+                            
+                        </div>
+                    </div>
+                    </form>
+                </div>
+
+            <!--    EVENTO    -->
+            <div id="evento-formatado"></div>
+
+        </div>
+
+</body>
+</html>
