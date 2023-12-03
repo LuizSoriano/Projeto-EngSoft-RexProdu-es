@@ -54,19 +54,27 @@ window.onclose = function(event) {
 }
 
 
-//EDITA E EXCLUI UM EVENTO
+//CHAMA FUNCAO QUE EDITA E EXCLUI UM EVENTO
 document.addEventListener("click", (e) => {
   console.log("clique detectado", e.target);
   const targetEl = e.target;
   const parentEventEl = targetEl.closest(".evento");
 
   if (targetEl.classList.contains("deletar") && parentEventEl) {
-      parentEventEl.remove();
+      
+      var idElemento = e.target.id;
+      idElemento = parseInt(idElemento, 10);
+      console.log("Id elemento clicado: ", idElemento);
+      console.log(typeof idElemento);
       console.log("Identificou o botão excluir");
+
+      deleteEvento(idElemento);
 
   }
   if(targetEl.classList.contains("editar") && parentEventEl){
-
+      var idEl = e.target.id;
+      console.log("Id elemento clicado: ", idEl);
+      console.log("Identificou o botão editar");
   }
 
 });
@@ -76,11 +84,24 @@ document.addEventListener("click", (e) => {
 /*
 
 
------------------ CONEXAO COM A API -----------------
+##########----------------- CONEXAO COM A API -----------------############
 
 */
 
 const url = "http://localhost:3000/evento";
+
+//DELETE evento
+
+async function deleteEvento(idEvento) {
+
+  const response = await fetch(`${url}/${idEvento}`, {
+    method: "DELETE",
+  });
+
+  const data = await response.json();
+
+  console.log(data);
+}
 
 async function getAllEventos(){
   const response = await fetch(url);
@@ -114,11 +135,15 @@ async function getAllEventos(){
     ev.appendChild(eventoArrec)
 
     const editButton= document.createElement("button");
-    editButton.innerHTML = '<i class="material-symbols-outlined editar">edit_square</i>';
+    editButton.innerHTML = '<span>editar</span>';
+    editButton.setAttribute("id", `${evento.id}`);
+    editButton.classList.add("editar");
     ev.appendChild(editButton)
 
     const excludeButton= document.createElement("button");
-    excludeButton.innerHTML = '<i class="material-symbols-outlined deletar">delete</i>';
+    excludeButton.innerHTML = '<span>excluir</span>';
+    excludeButton.setAttribute("id", `${evento.id}`);
+    excludeButton.classList.add("deletar");
     ev.appendChild(excludeButton)
 
     mostraEvento.appendChild(ev);
@@ -142,7 +167,7 @@ async function postEvento(event){
 }
 
 
-//PEGA DOS DADOS COLOCADOS NOS INPUTS E CRIA UMA LISTA PARA ENVIAR OS DADOS PARA O BACK, DEPOIS CHAMA A FUNCAO QUE CRIARÁ O ELEMENTO NA TELA
+//PEGA DOS DADOS COLOCADOS NOS INPUTS E CRIA UMA JSON PARA ENVIAR OS DADOS PARA O BACK, DEPOIS CHAMA A FUNCAO QUE CRIARÁ O ELEMENTO NA TELA
 formEvento.addEventListener("submit", (e) =>{
   e.preventDefault();
 
@@ -150,19 +175,19 @@ formEvento.addEventListener("submit", (e) =>{
 
   let event = {
 
-    nome:nomeEvento.value,
-    local:localEvento.value,
-    data:dataEvento.value,
-    descricao:descricaoEvento.value,
-    tipoevento:tipoEvento.value,
+    nome: nomeEvento.value,
+    local: localEvento.value,
+    data: dataEvento.value,
+    descricao: descricaoEvento.value,
+    tipoEvento: tipoEvento.value,
     duracao: duracaoEvento.value,
-    arte:"https://img.r7.com/images/bruno-e-marrone-22092021182309071?dimensions=677x677",
+    arte: "https://img.r7.com/images/bruno-e-marrone-22092021182309071?dimensions=677x677",
     hora: inicioEvento.value,
     atracao: nomeArtistaEvento.value,
     palco: palcoEvento.value,
     titulo: ingressoEvento.value,
     tipo: tipoIngressoEvento.value,
-    valor:valorIngressoEvento.value
+    valor: valorIngressoEvento.value
     
   }
   

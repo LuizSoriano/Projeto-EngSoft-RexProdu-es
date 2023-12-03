@@ -165,15 +165,24 @@ body{
 }
 
 .artista button{
-    background-color: transparent;
+    background-color: white;
+    width: 50px;
+    height: 20px;
     border: 0;
     font-family: inherit;
     color: inherit;
     cursor: pointer;
-    text-align: left;
+    text-align: center;
     padding: 0;
 }
 
+.deletar{
+    background-color: white;
+}
+
+.artista button span{
+    pointer-events: none;
+}
 .evento{
     justify-content:space-between;
     width: 99%;
@@ -205,18 +214,20 @@ body{
 }
 
 .evento button{
-    background-color: transparent;
+    background-color: white;
+    width: 50px;
+    height: 20px;
     border: 0;
     font-family: inherit;
     color: inherit;
     cursor: pointer;
-    text-align: left;
+    text-align: center;
     padding: 0;
 
 }
 
-.evento button i{
-    font-size: 20px;
+.evento button span{
+    pointer-events: none;
 }
 
 .simbolosSobEventos i{

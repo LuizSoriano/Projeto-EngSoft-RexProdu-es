@@ -3,7 +3,36 @@ function paraEventos(){
     window.location.href="../index.html";
 }
 
-//FORM Artista
+//Captura evento de click em botao editar ou excluir
+document.addEventListener("click", (e) => {
+  console.log("clique detectado", e.target);
+  const targetEl = e.target;
+  const parentEventEl = targetEl.closest(".artista");
+
+  if (targetEl.classList.contains("deletar") && parentEventEl) {
+      var idElemento = e.target.id;
+      var hrefElemento = e.target.getAttribute('href');
+
+      deleteArtista(idElemento, hrefElemento);
+
+
+      console.log("CNPJ elemento clicado: ", idElemento);
+      console.log("NOME elemento clicado: ", hrefElemento);
+      console.log("Identificou o botão excluir");
+
+  }
+  if(targetEl.classList.contains("editar") && parentEventEl){
+    var idElemento = e.target.id;
+    console.log("CNPJ elemento clicado: ", idElemento);
+    console.log("Identificou o botão editar");
+  }
+
+});
+
+
+
+
+// ------ FORM Artista
 
 //MOSTRA E FECHA FORMULARIO ADD Artista
 const switchModal = () => {
@@ -52,11 +81,28 @@ const  mostraArtista = document.querySelector("#artista-formatado");
 
 /*
 
- ------------------ CONEXOES COM A API -------------------
+ ############------------------ CONEXOES COM A API -------------------############
 
 */
 
+
+
 const url = "http://localhost:3000/artista";
+
+
+
+//DELETE Artista
+async function deleteArtista(cnpj, nome) {
+
+  const response = await fetch(`${url}/${cnpj}/${nome.toString()}`, {
+    method: "DELETE",
+  });
+
+  const data = await response.json();
+
+  console.log(data);
+}
+
 
 //POST Artista
 async function postArtista(artist){
@@ -71,6 +117,8 @@ async function postArtista(artist){
 
   const data = await response.json();
 
+  console.log(data)
+
 }
 
 
@@ -80,7 +128,7 @@ formArtista.addEventListener("submit", (e) =>{
 
   let artist = {
 
-    cpnj: cnpjArtista.value,
+    cnpj: cnpjArtista.value,
     nome: nomeArtista.value,
     empresa: empresaArtista.value,
     telefone: telefoneArtista.value,
@@ -90,6 +138,8 @@ formArtista.addEventListener("submit", (e) =>{
   }
 
   artist = JSON.stringify(artist)
+
+  console.log(artist);
 
   postArtista(artist);
 
@@ -132,11 +182,16 @@ async function getAllArtistas(){
     art.appendChild(artistaEmail)
 
     const editButton= document.createElement("button");
-    editButton.innerHTML = '<i class="material-symbols-outlined editar">edit_square</i>';
+    editButton.innerHTML =  '<span>editar</span>';
+    editButton.setAttribute("id", `${artista.cnpj}`);
+    editButton.classList.add("editar");
     art.appendChild(editButton)
 
     const excludeButton= document.createElement("button");
-    excludeButton.innerHTML = '<i class="material-symbols-outlined deletar">delete</i>';
+    excludeButton.innerHTML =  '<span>excluir</span>';
+    excludeButton.setAttribute("id", `${artista.cnpj}`);
+    excludeButton.setAttribute("href", `${artista.nome}`);
+    excludeButton.classList.add("deletar");
     art.appendChild(excludeButton)
 
     mostraArtista.appendChild(art);
