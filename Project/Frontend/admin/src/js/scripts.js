@@ -11,109 +11,14 @@ const  nomeEvento = document.querySelector("#nome-evento");
 const  localEvento = document.querySelector("#local-evento");
 const  dataEvento = document.querySelector("#data-evento");
 const  nomeArtistaEvento = document.querySelector("#nome-artista");
-const  inicioEvento = document.querySelector("#tempo-inicio");
+const  duracaoEvento = document.querySelector("#tempo-duracao");
 const  palcoEvento = document.querySelector("#nome-palco");
 const  ingressoEvento = document.querySelector("#nome-ingresso");
 const  tipoIngressoEvento = document.querySelector("#tipo-ingresso");
 const  valorIngressoEvento = document.querySelector("#valor");
 const  tipoEvento = document.querySelector("#tiposEv");
-const  imgEvento = document.querySelector("#imgEv");
-
-//EDITA E EXCLUI UM EVENTO
-document.addEventListener("click", (e) => {
-  console.log("clique detectado", e.target);
-  const targetEl = e.target;
-  const parentEventEl = targetEl.closest(".evento");
-
-  if (targetEl.classList.contains("deletar") && parentEventEl) {
-      parentEventEl.remove();
-      console.log("Identificou o botão excluir");
-
-  }
-  if(targetEl.classList.contains("editar") && parentEventEl){
-
-  }
-
-});
-
-
-//CRIA UMA NOVA LINHA DE EVENTO APOS SALVAR/SUBMETER O FORMULARIO
-const salvarForm = (arr) => {
-
-    /* Isso sera feito com GET, logo depois de enviar os dados salvos pro back  */
-
-    const evento = document.createElement("div");
-    evento.classList.add("evento");
-
-    const eventoNome = document.createElement("h4");
-    eventoNome.innerText = arr[0];
-    evento.appendChild(eventoNome)
-
-    const eventoLocal = document.createElement("h4");
-    eventoLocal.innerText = arr[1];
-    evento.appendChild(eventoLocal)
-
-    const eventoData = document.createElement("h4");
-    eventoData.innerText = arr[2];
-    evento.appendChild(eventoData)
-
-    const eventoPublico= document.createElement("h4");
-    eventoPublico.innerText = "0";
-    evento.appendChild(eventoPublico) 
-
-    const eventoArrec= document.createElement("h4");
-    eventoArrec.innerText = "0K";
-    evento.appendChild(eventoArrec)
-
-    const editButton= document.createElement("button");
-    editButton.innerHTML = '<i class="material-symbols-outlined editar">edit_square</i>';
-    evento.appendChild(editButton)
-
-    const excludeButton= document.createElement("button");
-    excludeButton.innerHTML = '<i class="material-symbols-outlined deletar">delete</i>';
-    evento.appendChild(excludeButton)
-
-    mostraEvento.appendChild(evento);
-
-    console.log(evento);
-};
-
-
-//PEGA DOS DADOS COLOCADOS NOS INPUTS E CRIA UMA LISTA PARA ENVIAR OS DADOS PARA O BACK, DEPOIS CHAMA A FUNCAO QUE CRIARÁ O ELEMENTO NA TELA
-formEvento.addEventListener("submit", (e) =>{
-    e.preventDefault();
-
-    console.log("Enviou from");
-
-    const inputNome = nomeEvento.value
-    const inputLocal = localEvento.value
-    const inputData = dataEvento.value
-    const inputNomeArt = nomeArtistaEvento.value
-    const inputInicio = inicioEvento.value
-    const inputPlaco = palcoEvento.value
-    const inputIngresso = ingressoEvento.value
-    const inputTipoIngresso = tipoIngressoEvento.value
-    const inputValor = valorIngressoEvento.value
-    const inputTipoEv = tipoEvento.value
-    const inputImg = imgEvento.value
-
-    let elements = [];
-
-    elements.push(inputNome);
-    elements.push(inputLocal);
-    elements.push(inputData);
-    elements.push(inputNomeArt);
-    elements.push(inputInicio);
-    elements.push(inputPlaco);
-    elements.push(inputIngresso);
-    elements.push(inputTipoIngresso);
-    elements.push(inputValor);
-    elements.push(inputTipoEv);
-    elements.push(inputImg);
-    
-    salvarForm(elements);
-
-});
+const descricaoEvento = document.querySelector("#descricao");
+const inicioEvento = document.querySelector("#tempo-inicio");
 
 //MOSTRA E FECHA FORMULARIO ADD EVENTO
 const switchModal = () => {
@@ -147,3 +52,124 @@ window.onclose = function(event) {
       switchModal();
     }
 }
+
+
+//EDITA E EXCLUI UM EVENTO
+document.addEventListener("click", (e) => {
+  console.log("clique detectado", e.target);
+  const targetEl = e.target;
+  const parentEventEl = targetEl.closest(".evento");
+
+  if (targetEl.classList.contains("deletar") && parentEventEl) {
+      parentEventEl.remove();
+      console.log("Identificou o botão excluir");
+
+  }
+  if(targetEl.classList.contains("editar") && parentEventEl){
+
+  }
+
+});
+
+
+
+/*
+
+
+----------------- CONEXAO COM A API -----------------
+
+*/
+
+const url = "http://localhost:3000/evento";
+
+async function getAllEventos(){
+  const response = await fetch(url);
+
+  const data = await response.json();
+
+  console.log(data);
+
+  data.map((evento) =>{
+    const ev = document.createElement("div");
+    ev.classList.add("evento");
+
+    const eventoNome = document.createElement("h4");
+    eventoNome.innerText = evento.nome;
+    ev.appendChild(eventoNome)
+    
+    const eventoLocal = document.createElement("h4");
+    eventoLocal.innerText = evento.local;
+    ev.appendChild(eventoLocal)
+
+    const eventoData = document.createElement("h4");
+    eventoData.innerText = evento.data;
+    ev.appendChild(eventoData)
+
+    const eventoPublico= document.createElement("h4");
+    eventoPublico.innerText = "0";
+    ev.appendChild(eventoPublico) 
+
+    const eventoArrec= document.createElement("h4");
+    eventoArrec.innerText = "0K";
+    ev.appendChild(eventoArrec)
+
+    const editButton= document.createElement("button");
+    editButton.innerHTML = '<i class="material-symbols-outlined editar">edit_square</i>';
+    ev.appendChild(editButton)
+
+    const excludeButton= document.createElement("button");
+    excludeButton.innerHTML = '<i class="material-symbols-outlined deletar">delete</i>';
+    ev.appendChild(excludeButton)
+
+    mostraEvento.appendChild(ev);
+
+  });
+
+}
+getAllEventos();
+
+//POST Eventos
+async function postEvento(event){
+  const response = await fetch(`${url}`,{
+    method: "POST",
+    body: event,
+    headers:{
+      "Content-type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+}
+
+
+//PEGA DOS DADOS COLOCADOS NOS INPUTS E CRIA UMA LISTA PARA ENVIAR OS DADOS PARA O BACK, DEPOIS CHAMA A FUNCAO QUE CRIARÁ O ELEMENTO NA TELA
+formEvento.addEventListener("submit", (e) =>{
+  e.preventDefault();
+
+  console.log("Enviou from");
+
+  let event = {
+
+    nome:nomeEvento.value,
+    local:localEvento.value,
+    data:dataEvento.value,
+    descricao:descricaoEvento.value,
+    tipoevento:tipoEvento.value,
+    duracao: duracaoEvento.value,
+    arte:"https://img.r7.com/images/bruno-e-marrone-22092021182309071?dimensions=677x677",
+    hora: inicioEvento.value,
+    atracao: nomeArtistaEvento.value,
+    palco: palcoEvento.value,
+    titulo: ingressoEvento.value,
+    tipo: tipoIngressoEvento.value,
+    valor:valorIngressoEvento.value
+    
+  }
+  
+  event = JSON.stringify(event)
+
+  console.log(event);
+
+  postEvento(event);
+
+});

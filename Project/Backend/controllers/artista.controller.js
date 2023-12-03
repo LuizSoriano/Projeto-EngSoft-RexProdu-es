@@ -25,7 +25,7 @@ function cnpjValido(cnpj) {
     cnpj = cnpj.replace(/[^\d]/g, '');
 
     // Verifique se o CNPJ tem 14 dígitos
-    if (cnpj.length !== 14) {
+    if (cnpj.length !== 15) {
         return false;
     }
 

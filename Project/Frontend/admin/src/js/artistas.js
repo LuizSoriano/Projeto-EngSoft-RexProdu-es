@@ -39,98 +39,110 @@ window.onclose = function(event) {
 }
 
 
-//Manipula os inputs do formulario
+//Manipula os inputs do formulario de adicionar artista
 const  formArtista= document.querySelector("#from-add-artista");
-const  mostraArtista = document.querySelector("#artista-formatado");
 const  nomeArtista = document.querySelector("#nome-artista");
 const  empresaArtista = document.querySelector("#nome-empresa-artista");
 const  cnpjArtista = document.querySelector("#cnpj-artista");
 const  telefoneArtista = document.querySelector("#telefone-artista");
 const  emailArtista = document.querySelector("#email-artista");
 
-//Pega os dados do formulario de envia 
-formArtista.addEventListener("submit", (e) =>{
-  e.preventDefault();
+//manipula a tag div do artista formatado
+const  mostraArtista = document.querySelector("#artista-formatado");
 
-  console.log("Enviou from");
+/*
 
-  const inputNome = nomeArtista.value
-  const inputEmpresa = empresaArtista.value
-  const inputCnpj = cnpjArtista.value
-  const inputTelefone = telefoneArtista.value
-  const inputEmail = emailArtista.value
+ ------------------ CONEXOES COM A API -------------------
 
-  let elements = [];
+*/
 
-  elements.push(inputNome);
-  elements.push(inputCnpj);
-  elements.push(inputEmpresa);
-  elements.push(inputTelefone);
-  elements.push(inputEmail);
+const url = "http://localhost:3000/artista";
 
-  salvarForm(elements);
+//POST Artista
+async function postArtista(artist){
 
-});
+  const response = await fetch(`${url}`, {
+    method: "POST",
+    body: artist,
+    headers:{
+      "Content-type": "application/json",
+    },
+  });
 
-//salva 
-const salvarForm = (arr) => {
+  const data = await response.json();
 
-  /* Isso sera feito com GET, logo depois de enviar os dados salvos pro back  */
-
-  const artista = document.createElement("div");
-  artista.classList.add("artista");
-
-  const artistaNome = document.createElement("h4");
-  artistaNome.innerText = arr[0];
-  artista.appendChild(artistaNome)
-
-  const artistaCnpj= document.createElement("h4");
-  artistaCnpj.innerText = arr[1];
-  artista.appendChild(artistaCnpj)
-
-  const artistaShows= document.createElement("h4");
-  artistaShows.innerText = "0";
-  artista.appendChild(artistaShows)
-
-  const artistaEmpresa = document.createElement("h4");
-  artistaEmpresa.innerText = arr[2];
-  artista.appendChild(artistaEmpresa)
-
-  const artistaTelefone= document.createElement("h4");
-  artistaTelefone.innerText = arr[3];
-  artista.appendChild(artistaTelefone) 
-
-  const artistaEmail= document.createElement("h4");
-  artistaEmail.innerText = arr[4];
-  artista.appendChild(artistaEmail)
-
-  const editButton= document.createElement("button");
-  editButton.innerHTML = '<i class="material-symbols-outlined editar">edit_square</i>';
-  artista.appendChild(editButton)
-
-  const excludeButton= document.createElement("button");
-  excludeButton.innerHTML = '<i class="material-symbols-outlined deletar">delete</i>';
-  artista.appendChild(excludeButton)
-
-  mostraArtista.appendChild(artista);
-
-  console.log(artista);
 }
 
 
-//Gerencia eventos de clique
-document.addEventListener("click", (e) => {
-  console.log("clique detectado", e.target);
-  const targetEl = e.target;
-  const parentEventEl = targetEl.closest(".artista");
+//Pega os dados do formulario e manda para a funcao que faz o POST
+formArtista.addEventListener("submit", (e) =>{
+  e.preventDefault();
 
-  if (targetEl.classList.contains("deletar") && parentEventEl) {
-      parentEventEl.remove();
-      console.log("Identificou o botão excluir");
+  let artist = {
+
+    cpnj: cnpjArtista.value,
+    nome: nomeArtista.value,
+    empresa: empresaArtista.value,
+    telefone: telefoneArtista.value,
+    email: emailArtista.value,
+    contrato: "https://ufla.br/"
 
   }
-  if(targetEl.classList.contains("editar") && parentEventEl){
 
-  }
+  artist = JSON.stringify(artist)
+
+  postArtista(artist);
 
 });
+
+//faz o GET das informações do artista
+async function getAllArtistas(){
+  const response = await fetch(url);
+
+  const data = await response.json();
+
+  console.log(data);
+
+  data.map((artista) => {
+    const art = document.createElement("div");
+    art.classList.add("artista");
+
+    const artistaNome = document.createElement("h4");
+    artistaNome.innerText = artista.nome;
+    art.appendChild(artistaNome)
+
+    const artistaCnpj = document.createElement("h4");
+    artistaCnpj.innerText = artista.cnpj;
+    art.appendChild(artistaCnpj)
+
+    const artistaShows= document.createElement("h4");
+    artistaShows.innerText = "0";
+    art.appendChild(artistaShows)
+
+    const artistaEmpresa = document.createElement("h4");
+    artistaEmpresa.innerText = artista.empresa;
+    art.appendChild(artistaEmpresa)
+
+    const artistaTelefone = document.createElement("h4");
+    artistaTelefone.innerText = artista.telefone;
+    art.appendChild(artistaTelefone)
+
+    const artistaEmail = document.createElement("h4");
+    artistaEmail.innerText = artista.email;
+    art.appendChild(artistaEmail)
+
+    const editButton= document.createElement("button");
+    editButton.innerHTML = '<i class="material-symbols-outlined editar">edit_square</i>';
+    art.appendChild(editButton)
+
+    const excludeButton= document.createElement("button");
+    excludeButton.innerHTML = '<i class="material-symbols-outlined deletar">delete</i>';
+    art.appendChild(excludeButton)
+
+    mostraArtista.appendChild(art);
+
+  });
+
+}
+
+getAllArtistas();

@@ -44,7 +44,7 @@ async function criaEvento(req, res){
     //validação dos dados
     var resultado = null
     //chamada para o services
-    resultado = await eventoServices.criaEvento(nome, local, data, descricao, tipoEvento, duracao, arte, hora, atracao, palco, titulo, tipo, valor, descricao, tipoEvento)
+    resultado = await eventoServices.criaEvento(nome, local, data, descricao, tipoEvento, duracao, arte, hora, atracao, palco, titulo, tipo, valor)
     res.send(resultado)
 }
 
