@@ -3,11 +3,19 @@ import ingressoClienteServices from '../services/ingressoCliente.services.js'
 
 async function criaIngressoCliente(req, res){
     const idIngresso = req.body.idIngresso
-    const cpf = req.body.cpf
+    const idCliente = req.body.idCliente
+    const quant = req.body.quantidade
 
     var resultado = null
-    resultado = await ingressoClienteServices.criaIngressoCliente(idIngresso, cpf)
+    resultado = await ingressoClienteServices.criaIngressoCliente(idIngresso, idCliente, quant)
     res.send(resultado)
 }
 
-export default {criaIngressoCliente}
+async function getIngressoCliente(req, res){
+    //capturar dados
+    const id = req.params.id
+    const resultado = await ingressoClienteServices.getIngressoCliente(id)
+    res.send(resultado)
+}
+
+export default {criaIngressoCliente, getIngressoCliente}

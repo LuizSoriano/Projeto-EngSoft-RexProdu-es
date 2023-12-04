@@ -24,10 +24,9 @@ O sistema lidará com dois tipos de usuário: o organizador do evento, que será
 
 ## Tecnologias Utilizadas
 
-- Front-end : `React`
+- Front-end : `React `
 - Back-end: `Nodejs versão 10.2.3`
-- Banco de Dados utilizado: `PostgreSQL`
-- Servidor utilizado: `Elephant SQL`
+- Banco de Dados utilizado: `PostgreSQL 15.4 (Ubuntu 15.4-2.pgdg22.04+1)`
 
 ## Regras e padrões do Git
 
