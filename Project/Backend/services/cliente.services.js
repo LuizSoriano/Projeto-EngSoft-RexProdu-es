@@ -45,14 +45,9 @@ async function excluiCliente(id){
     return resultado
 }
 
-async function alteraCliente(id, cpfnew, nome, email, senha){
+async function alteraCliente(id, nome, email){
     //regra de negócio
-    var id = await clientePersistence.getUmClienteID(id)
-    var clientenew = await clientePersistence.getUmCliente(cpfnew)
-    var resultado = null
-    //chamar persistência
-    if(id.length == 1 && clientenew.length == 0)
-        resultado = await clientePersistence.alteraCliente(id, cpfnew, nome, email, senha)
+    const resultado = await clientePersistence.alteraCliente(id, nome, email)
     return resultado
 }
 

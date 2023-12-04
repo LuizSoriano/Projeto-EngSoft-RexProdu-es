@@ -8,5 +8,6 @@ router.get('/:cpf', clienteController.getUmCliente)
 router.get('/busca/porid/:id', clienteController.getUmClienteID)
 router.post('', clienteController.criaCliente)
 router.put('/:id', clienteController.alteraCliente)
+router.delete('/:id', clienteController.excluiCliente)
 
 export default router

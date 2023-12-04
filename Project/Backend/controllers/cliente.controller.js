@@ -110,15 +110,13 @@ async function excluiCliente(req, res){
 async function alteraCliente(req, res){
     //capturar dados
     const id = req.params.id
-    const cpfnew = req.body.cpf
     const nome = req.body.nome
     const email = req.body.email
-    const senha = req.body.senha
     //validação dos dados
 
 
     //chamada para o services
-    const resultado = await clienteServices.alteraCliente(id, cpfnew, nome, email, senha)
+    const resultado = await clienteServices.alteraCliente(id, nome, email)
     res.send(resultado)
 }
 

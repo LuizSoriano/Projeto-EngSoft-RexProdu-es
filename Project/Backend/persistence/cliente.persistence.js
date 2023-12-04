@@ -105,11 +105,11 @@ async function excluiCliente(id){
     return resultado
 }
 
-async function alteraCliente(id, cpfnew, nome, email, senha){
+async function alteraCliente(id, nome, email){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("update cliente set cpf=$1, nome=$2, email=$3, senha=$4 where id=$5 returning *", [cpfnew, nome, email, senha, id])
+        var query = await con.query("update cliente set nome=$1, email=$2 where id=$3 returning *", [nome, email, id])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){
