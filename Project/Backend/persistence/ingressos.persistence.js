@@ -30,6 +30,25 @@ async function getUmIngresso(idEvento){
     return resultado
 }
 
+async function getIdIngresso(titulo){
+    var resultado = null;
+    const con = await BD.conectar()//espera uma conexão
+    try{
+        var query = await con.query("SELECT id FROM ingresso WHERE titulo = $1", [titulo]);
+
+        // Verifica se a consulta retornou algum resultado
+        if (query.rows.length > 0) {
+            resultado = query.rows[0].id;  // Extrai o valor do ID do primeiro resultado
+            console.log(resultado)
+        }
+    }catch(err){
+        console.log(err)
+    }finally{
+        con.release()
+    }
+    return resultado
+}
+
 async function criaIngresso(titulo, tipo, valor, id){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
@@ -75,4 +94,4 @@ async function alteraIngresso(id, titulo, tipo, valor){
     return resultado
 }
 
-export default {getTodosIngressos, getUmIngresso, criaIngresso, excluiIngresso, alteraIngresso}
+export default {getTodosIngressos, getUmIngresso, criaIngresso, excluiIngresso, alteraIngresso, getIdIngresso}

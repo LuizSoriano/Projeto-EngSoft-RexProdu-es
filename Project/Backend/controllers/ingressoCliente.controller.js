@@ -2,12 +2,12 @@ import pg from 'pg'//npm install pg
 import ingressoClienteServices from '../services/ingressoCliente.services.js'
 
 async function criaIngressoCliente(req, res){
-    const idIngresso = req.body.idIngresso
+    const titulo = req.body.titulo
     const idCliente = req.body.idCliente
     const quant = req.body.quantidade
 
     var resultado = null
-    resultado = await ingressoClienteServices.criaIngressoCliente(idIngresso, idCliente, quant)
+    resultado = await ingressoClienteServices.criaIngressoCliente(titulo, idCliente, quant)
     res.send(resultado)
 }
 
