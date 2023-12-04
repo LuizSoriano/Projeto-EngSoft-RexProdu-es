@@ -23,6 +23,16 @@ async function getUmCliente(req, res){
     //res.send(JSON.stringify(resultado))
 }
 
+async function getUmClienteID(req, res){
+    //capturar dados
+    const id = req.params.id
+    const resultado = await clienteServices.getUmClienteID(id)
+    res.send(resultado)
+    //const resultado = await clienteServices.getTodosClientes()
+    //res.send(JSON.stringify(resultado))
+}
+
+
 async function logarCliente(req, res){
     //capturar dados
     const email = req.params.email
@@ -114,4 +124,4 @@ async function alteraCliente(req, res){
     res.send(resultado)
 }
 
-export default {getTodosClientes, getUmCliente, logarCliente, cpfValido, criaCliente, excluiCliente, alteraCliente}
+export default {getTodosClientes, getUmCliente, logarCliente, cpfValido, criaCliente, excluiCliente, alteraCliente, getUmClienteID}

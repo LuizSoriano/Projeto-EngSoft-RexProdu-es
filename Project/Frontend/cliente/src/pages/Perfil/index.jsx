@@ -38,7 +38,7 @@ function Perfil() {
                     </div>
                     <div className="opcao">
                         <img src={Sair} alt="" />
-                        <Link to='/table' className="linkPerfil"><p>Sair</p></Link>
+                        <Link to='/login' className="linkPerfil"><p>Sair</p></Link>
                     </div>
                 </div>
             </div>

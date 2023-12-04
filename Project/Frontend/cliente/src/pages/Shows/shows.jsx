@@ -1,14 +1,15 @@
 import React from "react";
-import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Evento from "../../components/Evento";
+import HeaderLogado from '../../components/HeaderLogado'
 import './styles.css'
 import ShowsEventos from "../../images/shows.png"
 
 function Shows() {
+    const {id} = useParams()
     return(
         <div className="divBody">
-            <Header/>
+            <HeaderLogado/>
             <section className="sectionRole">
                 <img src={ShowsEventos} alt="Shows" className="imagemUniversitario"/>
                 <h1>Shows</h1>
@@ -23,7 +24,7 @@ function Shows() {
                         <p>Data</p>
                     </li>
                 </ul>
-                <Evento/>
+                <Evento id={id}/>
             </section>
             <Footer/>
         </div>

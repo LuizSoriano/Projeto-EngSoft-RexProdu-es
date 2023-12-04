@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../../components/Header";
+import HeaderLogado from '../../components/HeaderLogado'
 import Footer from "../../components/Footer";
 import './styles.css'
-import ImagemProvisoria from '../../images/balacobaco.png'
+import { format } from "date-fns"; 
 import Localizacao from '../../images/loc.png'
 import Data from '../../images/data.png'
 import {Link, useParams } from 'react-router-dom'
@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 
 function Detalhes () {
 
-    const {id} = useParams()
+    const parametros = useParams()
     const [eventos, setEvento] = useState([])
     const [counter, setCounter] = useState(0)
     const [ingresso, setIngresso] = useState([])
@@ -26,11 +26,19 @@ function Detalhes () {
 
     const getDetalhes = async() => {
         try {
-            const response = await axios.get(`http://localhost:3000/evento/tipoEvento/${id}`)
+            const response = await axios.get(`http://localhost:3000/evento/tipoEvento/${parametros.idEvento}`)
 
             const data = response.data;
-            console.log(data)
-            setEvento(data);
+
+            const dadosFormatados = data.map((dado) => ({
+                ...dado,
+                // Converta a string de data para um objeto Date
+                data: new Date(dado.data),
+              }));
+            
+
+            console.log(dadosFormatados)
+            setEvento(dadosFormatados);
         } catch (errr) {
             console.log(errr)
         }
@@ -39,7 +47,7 @@ function Detalhes () {
 
     const getIngressos = async() => {
         try {
-            const response = await axios.get(`http://localhost:3000/ingresso/${id}`)
+            const response = await axios.get(`http://localhost:3000/ingresso/${parametros.idEvento}`)
 
             const data = response.data
             
@@ -53,13 +61,16 @@ function Detalhes () {
         getDetalhes()
         getIngressos()
     }, [])
-    console.log(ingresso.titulo)
+    
     return(
         <div className="divDetalhes">
-            <Header />
+            <HeaderLogado />
             <div className="subDiv">
                 <div className="divImagem">
-                    <img src={ImagemProvisoria} alt="" className="imagemEvento"/>
+                    {eventos.map((evento) => (
+                        <img src={evento.arte} alt="" className="imagemEvento"/>
+                    ))}
+                    
                 </div>
                 <div className="gerall">
                     
@@ -71,7 +82,7 @@ function Detalhes () {
                             <div className="dataLoc">
                                 <div className="data">
                                     <img src={Data} alt="" />
-                                    <p>{evento.data}</p>
+                                    <p>{format(evento.data, "dd/MM/yyyy")}</p>
                                 </div>  
                                 <div className="loc">
                                     <img src={Localizacao} alt="" />
@@ -122,10 +133,10 @@ function Detalhes () {
                                     </div>
                                 </div>
                                 <Link
-                                    to={`/finalizar/${id}/${counter}`}
+                                    to={`/finalizar/${parametros.idEvento}/${counter}/${parametros.id}`}
                                     className="botaoVerde">
                                     <button className="buttonIngressos">
-                                        FAÇA LOGIN PARA COMPRAR
+                                        COMPRAR
                                     </button>
                                 </Link>
                             </div>

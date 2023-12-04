@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useState, useEffect } from "react";
 import { format } from "date-fns"; 
 
-function Evento() {
+function Evento({id}) {
 
     const [festivais, setFestivais] = useState([])
 
@@ -42,7 +42,7 @@ function Evento() {
                 <div className="evento" key={festival.id}>
                     <ul className="EventoUl">     
                         <li>                       
-                        <img src={FotoEvento} alt="" className="fotoevento" />
+                        <img src={festival.arte} alt="" className="fotoevento" />
                         </li>
                         <li>
                             <p>{festival.nome}</p>
@@ -55,7 +55,7 @@ function Evento() {
                         </li>
                     </ul>
                     <p>
-                        <Link to={`/tipoEvento/${festival.id}` } className="verMais">Ver mais</Link>
+                        <Link to={`/tipoEvento/${festival.id}/${id}` } className="verMais">Ver mais</Link>
                     </p>
                 </div>
                 ))

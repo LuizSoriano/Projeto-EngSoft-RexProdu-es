@@ -9,7 +9,7 @@ function BuscaImagem () { // Praticamente não tem difereneça
     return (
         <ul className="ulBusca">
             <li className="rexImage">    
-                <Link to="/">
+                <Link to="/home">
                     <img src={logo} alt="Rex"/>
                 </Link>
             </li>

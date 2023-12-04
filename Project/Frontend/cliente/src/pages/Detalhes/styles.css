@@ -134,7 +134,7 @@
 .loc {
     display: flex;
     flex-direction: row;
-    width: 130px;
+    width: 150px;
     justify-content: space-between;
     align-items: center;
 }

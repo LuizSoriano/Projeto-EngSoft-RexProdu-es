@@ -13,6 +13,11 @@ async function getUmCliente(cpf){
     return await clientePersistence.getUmCliente(cpf)
 }
 
+async function getUmClienteID(id){
+    //chama presistência
+   return await clientePersistence.getUmClienteID(id)
+}
+
 async function logarCliente(email, senha){
     //chama presistência
    var resultado = await clientePersistence.logarCliente(email, senha)
@@ -52,4 +57,4 @@ async function alteraCliente(cpfold, cpfnew, nome, email, senha){
 }
 
 
-export default {getTodosClientes, getUmCliente, logarCliente, criaCliente, excluiCliente, alteraCliente}
+export default {getTodosClientes, getUmCliente, logarCliente, criaCliente, excluiCliente, alteraCliente, getUmClienteID}

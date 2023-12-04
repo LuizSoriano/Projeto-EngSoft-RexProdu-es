@@ -4,8 +4,10 @@ import Footer from "../../components/Footer";
 import Evento from "../../components/Evento";
 import './styles.css'
 import Roles from '../../images/roles.png'
+import { useParams } from "react-router-dom";
 
 function Universitarios() {
+    const {id} = useParams()
     return(
         <div className="divBody">
             <Header/>
@@ -23,7 +25,7 @@ function Universitarios() {
                         <p>Data</p>
                     </li>
                 </ul>
-                <Evento/>
+                <Evento id={id}/>
             </section>
             <Footer/>
         </div>
