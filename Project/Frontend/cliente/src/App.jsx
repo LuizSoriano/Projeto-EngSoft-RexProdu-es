@@ -8,7 +8,8 @@ import FinalizarCompra from './pages/FinalizarCompra/index.jsx'
 import HomeLogado from './pages/HomeLogado/index.jsx'
 import Perfil from './pages/Perfil/index.jsx'
 import Login from './pages/Login/index.jsx'
-import MeusIngressos from './pages/meusIngressos/index.jsx'
+import MeusIngressos from './pages/MeusIngressos/index.jsx'
+import CadastroForm from './pages/Cadastro/index.jsx'
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         <Route path='/finalizar/:idEvento/:cont/:id' element={<FinalizarCompra />}></Route>
         <Route path='/perfil' element={<Perfil/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
-        <Route path='/ingressos' element={<MeusIngressos/>}></Route>
+        <Route path={`/ingressos/:id`} element={<MeusIngressos/>}></Route>
+        <Route path='/cadastro' element={<CadastroForm/>}></Route>
       </Routes>
     </Router>
   )

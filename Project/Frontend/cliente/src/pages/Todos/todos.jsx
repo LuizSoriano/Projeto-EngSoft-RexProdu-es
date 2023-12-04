@@ -10,7 +10,7 @@ function Todos() {
     const {id} = useParams()
     return(
         <div className="divBody">
-            <HeaderLogado/>
+            <HeaderLogado id={id}/>
             <section className="sectionRole">
                 <img src={TodosEventos} alt="Todos Eventos" className="imagemUniversitario"/>
                 <h1>Todos os Eventos</h1>

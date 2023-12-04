@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/Header";
+import HeaderLogado from "../../components/HeaderLogado";
 import Footer from "../../components/Footer";
 import Evento from "../../components/Evento";
 import './styles.css'
@@ -10,7 +10,7 @@ function Universitarios() {
     const {id} = useParams()
     return(
         <div className="divBody">
-            <Header/>
+            <HeaderLogado id={id}/>
             <section className="sectionRole">
                 <img src={Roles} alt="Rolês Universitários" className="imagemUniversitario"/>
                 <h1>Rolês Universitários</h1>

@@ -3,12 +3,12 @@ import './styles.css'
 import BuscaImagem from '../BuscaImagem';
 import Usuario from '../Usuario';
 
-function Header() {
+function Header({id}) {
     return(
         <header>
             <nav>
                 <BuscaImagem/>
-                <Usuario/>
+                <Usuario id={id}/>
             </nav>
         </header>
     );
