@@ -7,6 +7,6 @@ router.get('/:email/:senha', clienteController.logarCliente)
 router.get('/:cpf', clienteController.getUmCliente)
 router.get('/busca/porid/:id', clienteController.getUmClienteID)
 router.post('', clienteController.criaCliente)
-router.put('/:cpf', clienteController.alteraCliente)
+router.put('/:id', clienteController.alteraCliente)
 
 export default router

@@ -90,11 +90,11 @@ async function criaCliente(cpf, nome, email, senha){
     return resultado
 }
 
-async function excluiCliente(cpf){
+async function excluiCliente(id){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("delete from cliente where cpf=$1 returning *", [cpf])
+        var query = await con.query("delete from cliente where id=$1 returning *", [id])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){
@@ -105,11 +105,11 @@ async function excluiCliente(cpf){
     return resultado
 }
 
-async function alteraCliente(cpfold, cpfnew, nome, email, senha){
+async function alteraCliente(id, cpfnew, nome, email, senha){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("update cliente set cpf=$1, nome=$2, email=$3, senha+=$4 where cpf=$5 returning *", [cpfnew, nome, email, senha, cpfold])
+        var query = await con.query("update cliente set cpf=$1, nome=$2, email=$3, senha=$4 where id=$5 returning *", [cpfnew, nome, email, senha, id])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){

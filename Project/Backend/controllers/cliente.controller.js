@@ -100,18 +100,16 @@ async function criaCliente(req, res){
 
 async function excluiCliente(req, res){
     //capturar dados
-    const cpf = req.params.cpf
+    const id = req.params.id
     var resultado = null
-    if(cpfValido(cpf)){
         //chama SERVICES
-        resultado = await clienteServices.excluiCliente(cpf)
-    }
+        resultado = await clienteServices.excluiCliente(id)
     res.send(resultado)
 }
 
 async function alteraCliente(req, res){
     //capturar dados
-    const cpfold = req.params.cpf
+    const id = req.params.id
     const cpfnew = req.body.cpf
     const nome = req.body.nome
     const email = req.body.email
@@ -120,7 +118,7 @@ async function alteraCliente(req, res){
 
 
     //chamada para o services
-    const resultado = await clienteServices.alteraCliente(cpfold, cpfnew, nome, email, senha)
+    const resultado = await clienteServices.alteraCliente(id, cpfnew, nome, email, senha)
     res.send(resultado)
 }
 

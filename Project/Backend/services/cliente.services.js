@@ -35,24 +35,24 @@ async function criaCliente(cpf, nome, email, senha){
     return resultado
 }
 
-async function excluiCliente(cpf){
+async function excluiCliente(id){
     //regra de negócio
-    var cliente = await clientePersistence.getUmCliente(cpf)
+    var cliente = await clientePersistence.getUmClienteID(id)
     var resultado = null
     //chamar persistência
     if(cliente.length == 1)
-        resultado = await clientePersistence.excluiCliente(cpf)
+        resultado = await clientePersistence.excluiCliente(id)
     return resultado
 }
 
-async function alteraCliente(cpfold, cpfnew, nome, email, senha){
+async function alteraCliente(id, cpfnew, nome, email, senha){
     //regra de negócio
-    var clienteold = await clientePersistence.getUmCliente(cpfold)
+    var id = await clientePersistence.getUmClienteID(id)
     var clientenew = await clientePersistence.getUmCliente(cpfnew)
     var resultado = null
     //chamar persistência
-    if(clienteold.length == 1 && clientenew.length == 0)
-        resultado = await clientePersistence.alteraCliente(cpfold, cpfnew, nome, email, senha)
+    if(id.length == 1 && clientenew.length == 0)
+        resultado = await clientePersistence.alteraCliente(id, cpfnew, nome, email, senha)
     return resultado
 }
 
