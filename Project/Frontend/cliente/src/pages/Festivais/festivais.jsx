@@ -7,10 +7,10 @@ import HeaderLogado from '../../components/HeaderLogado'
 import { useParams } from "react-router-dom";
 
 function Festivais() {
-    const {id} = useParams()
+    const parametros = useParams()
     return(
         <div className="divBody">
-            <HeaderLogado/>
+            <HeaderLogado id={parametros.id}/>
            
             <section className="sectionRole">
                 <img src={FestivaisEventos} alt="Eventos Festivais" className="imagemUniversitario"/>

@@ -3,13 +3,13 @@ import '../../App.css'
 import logo from '../../images/prototipo.png'
 import { Link } from 'react-router-dom'
  
-function BuscaImagem () { // Praticamente não tem difereneça
+function BuscaImagem ({id}) { // Praticamente não tem difereneça
     //JS
     
     return (
         <ul className="ulBusca">
             <li className="rexImage">    
-                <Link to="/home">
+                <Link to={`/home/${id}`}>
                     <img src={logo} alt="Rex"/>
                 </Link>
             </li>

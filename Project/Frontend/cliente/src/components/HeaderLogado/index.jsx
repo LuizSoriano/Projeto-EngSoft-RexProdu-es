@@ -7,7 +7,7 @@ function Header({id}) {
     return(
         <header>
             <nav>
-                <BuscaImagem/>
+                <BuscaImagem id={id}/>
                 <Usuario id={id}/>
             </nav>
         </header>

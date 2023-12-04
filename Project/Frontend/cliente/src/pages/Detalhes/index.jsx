@@ -64,7 +64,7 @@ function Detalhes () {
     
     return(
         <div className="divDetalhes">
-            <HeaderLogado />
+            <HeaderLogado id={parametros.id}/>
             <div className="subDiv">
                 <div className="divImagem">
                     {eventos.map((evento) => (
