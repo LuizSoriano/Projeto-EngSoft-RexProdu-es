@@ -18,6 +18,7 @@ app.use(express.static('public'))
 
 //Faz o arser dos pacotes recebidos
 app.use(bodyParset.urlencoded({extends:true}))
+app.use(bodyParset.json());
 
 app.use("/cliente", clienteRouter)
 app.use("/artista", artistaRouter)

@@ -8,7 +8,7 @@ function HomeLogado() {
     const {id} = useParams()
     return(
         <body>
-            <HeaderLogado/>
+            <HeaderLogado id={id}/>
             <section className='Botoes'>
                 <Botao id={id}/>
             </section>

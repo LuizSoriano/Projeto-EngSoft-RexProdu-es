@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from 'axios'
 import './styles.css'
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 function Login(){
 
@@ -27,7 +27,6 @@ function Login(){
           console.log(data)
           console.log("Achamos você")
           setLoggedIn(true)
-          
           setUserId(data[0].id)
         }
           
@@ -51,6 +50,9 @@ function Login(){
               <input type="senha" name="senha" placeholder="Senha" required onChange={(e) => setSenha(e.target.value)}/>
               <button type="submit" className='btn-login' onClick={handleLogin}>Login</button>
             </form>
+          </div>
+          <div>
+            <Link to='/cadastro'><p>CADASTRE-SE</p></Link>
           </div>
         </div>
     );

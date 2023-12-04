@@ -2,11 +2,11 @@ import React from 'react'
 import Avatar from '../../images/avatar.png'
 import {Link} from 'react-router-dom'
 
-function Usuario() {
+function Usuario({id}) {
     return(
         <ul className="ulLogado">
             <li className='meusIngressos'>
-                <Link to='/ingressos' className='meusingressos'>Meus Ingressos</Link>
+                <Link to={`/ingressos/${id}`} className='meusingressos'>Meus Ingressos</Link>
             </li>
             <li className='avatar'>
                 <Link to='/perfil'><img src={Avatar} alt="" /></Link>
