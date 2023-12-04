@@ -19,7 +19,7 @@ async function getTipoEvento(tipoEvento){
     var resultado = null;
     const con = await BD.conectar()//espera uma conexão
     try{
-        var query = await con.query("select nome, local, data from evento where tipoEvento=$1", [tipoEvento])
+        var query = await con.query("select nome, local, data, arte from evento where tipoEvento=$1", [tipoEvento])
         console.log(query.rows)
         resultado = query.rows
     }catch(err){

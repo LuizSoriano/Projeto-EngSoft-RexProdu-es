@@ -37,10 +37,9 @@ async function getIdIngresso(titulo){
         var query = await con.query("SELECT id FROM ingresso WHERE titulo = $1", [titulo]);
 
         // Verifica se a consulta retornou algum resultado
-        if (query.rows.length > 0) {
-            resultado = query.rows[0].id;  // Extrai o valor do ID do primeiro resultado
-            console.log(resultado)
-        }
+
+        resultado = query.rows[0].id;  // Extrai o valor do ID do primeiro resultado
+        console.log(resultado)
     }catch(err){
         console.log(err)
     }finally{
