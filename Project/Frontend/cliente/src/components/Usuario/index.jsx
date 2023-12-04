@@ -9,7 +9,7 @@ function Usuario({id}) {
                 <Link to={`/ingressos/${id}`} className='meusingressos'>Meus Ingressos</Link>
             </li>
             <li className='avatar'>
-                <Link to='/perfil'><img src={Avatar} alt="" /></Link>
+                <Link to={`/perfil/${id}`}><img src={Avatar} alt="" /></Link>
             </li>
         </ul>
     );

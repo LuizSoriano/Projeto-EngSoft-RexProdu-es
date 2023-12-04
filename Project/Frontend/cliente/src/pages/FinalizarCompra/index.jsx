@@ -44,7 +44,7 @@ function FinalizarCompra() {
 
     return(
         <div className="finalizarDiv">
-            <HeaderLogado/>
+            <HeaderLogado id={parametros.id}/>
             <div className="mainCompra">
                 <h1>Finalizar Compra</h1>
                 <div className="compra">

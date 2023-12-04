@@ -10,6 +10,10 @@ import Perfil from './pages/Perfil/index.jsx'
 import Login from './pages/Login/index.jsx'
 import MeusIngressos from './pages/MeusIngressos/index.jsx'
 import CadastroForm from './pages/Cadastro/index.jsx'
+import DetalhesConta from './pages/DetalhesConta/index.jsx'
+import ExcluirConta from './pages/ExcluirConta/index.jsx'
+import AlterarSenha from './pages/AlterarSenha/index.jsx'
+import AlterarInfo from './pages/AlterarInfo/index.jsx'
 
 function App() {
   return (
@@ -23,10 +27,14 @@ function App() {
         <Route path='/universitarios/:id' element={<Universitarios />}/>
         <Route path={'/tipoEvento/:idEvento/:id'} element={<Detalhes />}></Route>
         <Route path='/finalizar/:idEvento/:cont/:id' element={<FinalizarCompra />}></Route>
-        <Route path='/perfil' element={<Perfil/>}></Route>
+        <Route path='/perfil/:id' element={<Perfil/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path={`/ingressos/:id`} element={<MeusIngressos/>}></Route>
         <Route path='/cadastro' element={<CadastroForm/>}></Route>
+        <Route path='/detalhesConta/:id' element={<DetalhesConta/>}></Route>
+        <Route path='/alterarInfo/:id' element={<AlterarInfo/>}></Route>
+        <Route path='/alterarSenha/:id' element={<AlterarSenha/>}></Route>
+        <Route path='/excluirConta/:id' element={<ExcluirConta/>}></Route>
       </Routes>
     </Router>
   )

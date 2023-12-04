@@ -11,7 +11,7 @@ function meusIngressos() {
 
     return(
         <div className='meusIngBody'>
-            <HeaderLogado/>
+            <HeaderLogado id={parametros.id}/>
             <div className='main'>
                 <h1>MEUS INGRESSOS</h1>
                 <div className= 'greybox'>

@@ -6,10 +6,10 @@ import './styles.css'
 import ShowsEventos from "../../images/shows.png"
 
 function Shows() {
-    const {id} = useParams()
+    const parametros = useParams()
     return(
         <div className="divBody">
-            <HeaderLogado/>
+            <HeaderLogado id={parametros.id}/>
             <section className="sectionRole">
                 <img src={ShowsEventos} alt="Shows" className="imagemUniversitario"/>
                 <h1>Shows</h1>

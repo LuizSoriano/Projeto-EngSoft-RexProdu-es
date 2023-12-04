@@ -48,12 +48,12 @@ function Login(){
             <form className='login-form'>
               <input type="email" name="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)}/>
               <input type="senha" name="senha" placeholder="Senha" required onChange={(e) => setSenha(e.target.value)}/>
-              <button type="submit" className='btn-login' onClick={handleLogin}>Login</button>
+              <button type="submit" className='btn-login' onClick={handleLogin}>LOGIN</button>
             </form>
-          </div>
-          <div>
-            <Link to='/cadastro'><p>CADASTRE-SE</p></Link>
-          </div>
+          
+            <Link to='/cadastro' className="cadastro"><p>CADASTRE-SE</p></Link>
+            </div>
+
         </div>
     );
   }
